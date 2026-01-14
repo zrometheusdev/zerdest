@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-POSTA TEST SORULARI</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        .question-box { margin-bottom: 15px; padding: 10px; border: 1px solid #eee; border-radius: 5px; }
+        .question-title { font-weight: bold; margin-bottom: 5px; display: block; }
+        .options label { display: block; margin-bottom: 5px; cursor: pointer; }
+        .correct { background-color: #d4edda; border-color: #c3e6cb; color: #155724; }
+        .wrong { background-color: #f8d7da; border-color: #f5c6cb; color: #721c24; }
+        #sonucAlani { margin-top: 20px; font-weight: bold; font-size: 1.2em; }
+        button { background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #0056b3; }
+        .cevap-anahtari { margin-top: 30px; font-size: 0.9em; color: #666; border-top: 1px solid #ccc; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>E-POSTA TEST SORULARI</h2>
+    <form id="quizForm">
+        <div class="question-box" id="q1">
+            <span class="question-title">1. Aşağıdakilerden hangisi, kullanıcıların e-posta gönderebilmek ve kendilerine gelen epostaları okuyabilmek için kullandıkları arayüz programlarından biridir?</span>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A) Mail</label>
+                <label><input type="radio" name="q1" value="B"> B) Opera</label>
+                <label><input type="radio" name="q1" value="C"> C) Outlook</label>
+                <label><input type="radio" name="q1" value="D"> D) Yandex</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q2">
+            <span class="question-title">2. Elektronik postanın karşılığı nedir?</span>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A) e-kart</label>
+                <label><input type="radio" name="q2" value="B"> B) e-posta</label>
+                <label><input type="radio" name="q2" value="C"> C) e-ticaret</label>
+                <label><input type="radio" name="q2" value="D"> D) e-online</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q3">
+            <span class="question-title">3. E-posta Yönetim Programı ile ilgili olarak aşağıdaki şıklardan hangisi söylenebilir?</span>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A) Gelen kutusunda, gönderdiğimiz e-postalar bulunur</label>
+                <label><input type="radio" name="q3" value="B"> B) Giden kutusunda, aldığımız e-postaları bulunur</label>
+                <label><input type="radio" name="q3" value="C"> C) E-postamıza herhangi bir dosya eklenebilir.</label>
+                <label><input type="radio" name="q3" value="D"> D) Her zaman açık olması gereklidir.</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q4">
+            <span class="question-title">4. E-posta yönetim yazılımında aşağıdakilerden hangisi yer almaz?</span>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A) Silinmiş öğeler</label>
+                <label><input type="radio" name="q4" value="B"> B) Giden kutusu</label>
+                <label><input type="radio" name="q4" value="C"> C) Geri dönen öğeler</label>
+                <label><input type="radio" name="q4" value="D"> D) Gönderilmiş öğeler</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q5">
+            <span class="question-title">5. Aşağıdaki e-posta adreslerinden hangisinin yazımı doğrudur?</span>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A) tolga@.gazi.edu.tr</label>
+                <label><input type="radio" name="q5" value="B"> B) çorum@meb.gov.tr</label>
+                <label><input type="radio" name="q5" value="C"> C) bilişim@mail.com</label>
+                <label><input type="radio" name="q5" value="D"> D) etogm@hotmail.com</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q6">
+            <span class="question-title">6. E-posta güncelleme seçeneklerinde aşağıdakilerden hangisi yoktur?</span>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A) İnternet tarayıcı özellikleri</label>
+                <label><input type="radio" name="q6" value="B"> B) Gereksiz e-postaları engelleme</label>
+                <label><input type="radio" name="q6" value="C"> C) Hesabınızı yönetme</label>
+                <label><input type="radio" name="q6" value="D"> D) Kişi listesini özelleştirme</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q7">
+            <span class="question-title">7. E-posta adresi alırken aşağıdaki karakterlerden hangisi kullanılamaz?</span>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A) o</label>
+                <label><input type="radio" name="q7" value="B"> B) e</label>
+                <label><input type="radio" name="q7" value="C"> C) i</label>
+                <label><input type="radio" name="q7" value="D"> D) ü</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q8">
+            <span class="question-title">8. Elektronik posta adresi, @ ile ayrılan iki kısımdan oluşur. @ işaretinin sol tarafına ………………… ismi; sağ tarafına ………………… ismi adresi yazılır.</span>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A"> A) kullanıcı, soyad</label>
+                <label><input type="radio" name="q8" value="B"> B) kullanıcı, servis</label>
+                <label><input type="radio" name="q8" value="C"> C) servis, internet</label>
+                <label><input type="radio" name="q8" value="D"> D) servis, kullanıcı</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q9">
+            <span class="question-title">9. E-posta nedir?</span>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A"> A) Elektronik ortamda mektup gönderme ve alma sistemi</label>
+                <label><input type="radio" name="q9" value="B"> B) Telefonla mesajlaşma uygulaması</label>
+                <label><input type="radio" name="q9" value="C"> C) Yazılı belge hazırlama programı</label>
+                <label><input type="radio" name="q9" value="D"> D) Sosyal medya platformu</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q10">
+            <span class="question-title">10. E-posta adresinde '@' işaretinin anlamı nedir?</span>
+            <div class="options">
+                <label><input type="radio" name="q10" value="A"> A) Mesajın önemini belirtir</label>
+                <label><input type="radio" name="q10" value="B"> B) Kullanıcı adı ile sunucu adını ayırır</label>
+                <label><input type="radio" name="q10" value="C"> C) Şifre güvenliğini sağlar</label>
+                <label><input type="radio" name="q10" value="D"> D) Dosya eklemeyi etkinleştirir</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q11">
+            <span class="question-title">11. E-posta gönderirken hangi bilgi zorunludur?</span>
+            <div class="options">
+                <label><input type="radio" name="q11" value="A"> A) Alıcının e-posta adresi</label>
+                <label><input type="radio" name="q11" value="B"> B) Gönderenin telefon numarası</label>
+                <label><input type="radio" name="q11" value="C"> C) Mesajın uzunluğu</label>
+                <label><input type="radio" name="q11" value="D"> D) E-posta şifresi</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q12">
+            <span class="question-title">12. E-posta ile hangi tür dosyalar gönderilebilir?</span>
+            <div class="options">
+                <label><input type="radio" name="q12" value="A"> A) Metin, resim, video gibi çeşitli dosyalar</label>
+                <label><input type="radio" name="q12" value="B"> B) Sadece yazılı metinler</label>
+                <label><input type="radio" name="q12" value="C"> C) Sadece ses kayıtları</label>
+                <label><input type="radio" name="q12" value="D"> D) Hiçbir dosya gönderilemez</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q13">
+            <span class="question-title">13. E-posta kullanmanın avantajlarından biri nedir?</span>
+            <div class="options">
+                <label><input type="radio" name="q13" value="A"> A) Yalnızca aynı şehirdeki kişilerle kullanılır</label>
+                <label><input type="radio" name="q13" value="B"> B) Sadece sesli görüşme yapılır</label>
+                <label><input type="radio" name="q13" value="C"> C) Hızlı ve ucuz iletişim sağlar</label>
+                <label><input type="radio" name="q13" value="D"> D) İnternet gerektirmez</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q14">
+            <span class="question-title">14. E-posta iletişiminde 'Konu' bölümünün amacı nedir?</span>
+            <div class="options">
+                <label><input type="radio" name="q14" value="A"> A) Mesajın uzunluğunu sınırlar</label>
+                <label><input type="radio" name="q14" value="B"> B) Alıcının adını belirtir</label>
+                <label><input type="radio" name="q14" value="C"> C) Gönderenin kimliğini doğrular</label>
+                <label><input type="radio" name="q14" value="D"> D) Mesajın içeriğini kısaca özetler</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q15">
+            <span class="question-title">15. E-posta gönderirken 'CC' ne anlama gelir?</span>
+            <div class="options">
+                <label><input type="radio" name="q15" value="A"> A) Gizli kopya, alıcıların birbirini görmemesi</label>
+                <label><input type="radio" name="q15" value="B"> B) Karbon kopya, mesajın başkalarına da gönderilmesi</label>
+                <label><input type="radio" name="q15" value="C"> C) Mesajın iptal edilmesi</label>
+                <label><input type="radio" name="q15" value="D"> D) Dosya ekleme seçeneği</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q16">
+            <span class="question-title">16. E-posta güvenliği için ne yapılmalıdır?</span>
+            <div class="options">
+                <label><input type="radio" name="q16" value="A"> A) Tüm e-postaları otomatik olarak silmek</label>
+                <label><input type="radio" name="q16" value="B"> B) E-posta adresini herkese açık paylaşmak</label>
+                <label><input type="radio" name="q16" value="C"> C) Şifreyi asla değiştirmemek</label>
+                <label><input type="radio" name="q16" value="D"> D) Şifreyi güçlü tutmak ve bilinmeyen bağlantılara tıklamamak</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q17">
+            <span class="question-title">17. E-posta ile normal mektup arasındaki temel fark nedir?</span>
+            <div class="options">
+                <label><input type="radio" name="q17" value="A"> A) E-posta dijital ve hızlıdır, normal mektup fiziksel ve yavaştır</label>
+                <label><input type="radio" name="q17" value="B"> B) E-posta sadece resim gönderir</label>
+                <label><input type="radio" name="q17" value="C"> C) Normal mektup daha güvenlidir</label>
+                <label><input type="radio" name="q17" value="D"> D) E-posta ücretsiz değildir</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q18">
+            <span class="question-title">18. İnternet üzerinden insanların birbirine ileti göndermelerini sağlayan araç aşağıdakilerden hangisidir?</span>
+            <div class="options">
+                <label><input type="radio" name="q18" value="A"> A) Gönderi</label>
+                <label><input type="radio" name="q18" value="B"> B) Web</label>
+                <label><input type="radio" name="q18" value="C"> C) E-Posta</label>
+                <label><input type="radio" name="q18" value="D"> D) İnternet</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q19">
+            <span class="question-title">19. Aşağıdakilerden hangisi e-posta adresinde kullanıcı adımızı belirlerken dikkat etmemiz gereken davranışlardan biri değildir?</span>
+            <div class="options">
+                <label><input type="radio" name="q19" value="A"> A) İngilizcede olmayan karakterleri kullanmamalıyız. (ç,ğ,ü gibi)</label>
+                <label><input type="radio" name="q19" value="B"> B) Boşluk bırakmamalıyız.</label>
+                <label><input type="radio" name="q19" value="C"> C) Akılda kalıcı bir isim belirlemeliyiz.</label>
+                <label><input type="radio" name="q19" value="D"> D) Kullanıcı adımızın yanına rakam yazmamalıyız.</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q20">
+            <span class="question-title">20. Aşağıdakilerden hangisi e-posta kullanım amaçlarından biri değildir?</span>
+            <div class="options">
+                <label><input type="radio" name="q20" value="A"> A) Bir kişiye veya gruba bilgi göndermek/almak.</label>
+                <label><input type="radio" name="q20" value="B"> B) Çeşitli kaynaklardan haber, reklam almak.</label>
+                <label><input type="radio" name="q20" value="C"> C) Bir konu hakkında tartışma ortamı oluşturmak.</label>
+                <label><input type="radio" name="q20" value="D"> D) Resim, müzik, video, belge veya herhangi bir türde dosya göndermek/almak.</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="kontrolEt()">Kontrol Et</button>
+        <div id="sonucAlani"></div>
+    </form>
+
+    <div class="cevap-anahtari">
+        <strong>CEVAPLAR</strong><br>
+        1-C 10-B 19-D<br>
+        2-B 11-A 20-C<br>
+        3-C 12-A<br>
+        4-C 13-C<br>
+        5-D 14-D<br>
+        6-A 15-B<br>
+        7-D 16-D<br>
+        8-B 17-A<br>
+        9-A 18-C
+    </div>
+
+</div>
+
+<script>
+    function kontrolEt() {
+        var cevaplar = {
+            q1: "C", q2: "B", q3: "C", q4: "C", q5: "D",
+            q6: "A", q7: "D", q8: "B", q9: "A", q10: "B",
+            q11: "A", q12: "A", q13: "C", q14: "D", q15: "B",
+            q16: "D", q17: "A", q18: "C", q19: "D", q20: "C"
+        };
+
+        var dogruSayisi = 0;
+        var toplamSoru = 20;
+
+        for (var i = 1; i <= toplamSoru; i++) {
+            var soruID = "q" + i;
+            var soruDiv = document.getElementById(soruID);
+            var secilen = document.querySelector('input[name="' + soruID + '"]:checked');
+
+            // Önceki stilleri temizle
+            soruDiv.classList.remove("correct", "wrong");
+
+            if (secilen) {
+                if (secilen.value === cevaplar[soruID]) {
+                    soruDiv.classList.add("correct");
+                    dogruSayisi++;
+                } else {
+                    soruDiv.classList.add("wrong");
+                }
+            }
+        }
+
+        var sonucYazisi = document.getElementById("sonucAlani");
+        sonucYazisi.innerHTML = "Doğru Sayısı: " + dogruSayisi + " / " + toplamSoru;
+        
+        // Kullanıcıya yukarı çıkıp sonuçları görmesi için scroll
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunum Özellikleri ve Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2, h3 { color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        ul, ol { margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #eee; }
+        .question-box { margin-bottom: 15px; padding: 10px; border: 1px solid #eee; border-radius: 5px; }
+        .question-title { font-weight: bold; margin-bottom: 5px; display: block; }
+        .options label { display: block; margin-bottom: 5px; cursor: pointer; }
+        .correct { background-color: #d4edda; border-color: #c3e6cb; color: #155724; }
+        .wrong { background-color: #f8d7da; border-color: #f5c6cb; color: #721c24; }
+        #sonucAlani { margin-top: 20px; font-weight: bold; font-size: 1.2em; }
+        button { background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #0056b3; }
+        .cevap-anahtari { margin-top: 30px; font-size: 0.9em; color: #666; border-top: 1px solid #ccc; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Sunumda dikkat edilmesi gereken özellikler:</h2>
+    <ol>
+        <li>Verilerin doğruluğu</li>
+        <li>Karşınızdaki kişiler sizi dinlemeli, yazılanları okumamalı</li>
+        <li>En önemli konu en başta verilmemeli</li>
+        <li>Resimler kullanılmalı ama düzgün ve büyük ölçekli resimler kullanılmalı</li>
+        <li>Mümkün olduğunca az yazı olmalı.</li>
+        <li>Grafikler, renkler uyumlu olmalı</li>
+        <li>Sunumu kime yapacağız, nerede yapacağız, saat kaçta yapacağız, kimler katılacak, Sunum yapılacak yer neresi? (Salon geniş mi dar mı)</li>
+        <li>Sunumların mutlaka yedeği olmalı. (Bilgisayarda, flash bellekte, mail adresinde vb.)</li>
+        <li>Slaytlarda kullandığınız videolar, müzikler yanınızda olmalı</li>
+        <li>Slaytlarda kullanılan video ve müziğin ses ayarları kontrol edilmeli</li>
+        <li>Sunum esnasında mümkünse wifi kapatılmalı</li>
+        <li>Slaytları mutlaka pdf’e çevirin ve mail adresinde bulundurun</li>
+        <li>Resim ve fotoğrafların telif bedellerine dikkat edilmeli</li>
+        <li>Oranlar düzgün kullanılmalı</li>
+        <li>Sunum anlatırken nerede durduğunuz pozisyon önemlidir</li>
+        <li>Sunumların süresine dikkat edilmeli</li>
+        <li>Sunumu yapmadan en az 2-3 defa kendi kendinize ya da başkalarına anlatın.</li>
+        <li>Giriş-gelişme-sonuç kısımları net olmalı. Sondaki durumu başta, baştakini sonda anlatmayın.</li>
+        <li>Yazım hatalarına dikkat edilmeli</li>
+        <li>Sunum anlatırken Özgüvenli ve güler yüzlü olunmalıdır</li>
+    </ol>
+
+    <h3>POWERPOİNT KISAYOLLAR</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Eylem</th>
+                <th>Kısayol Tuşu</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Yeni sunum oluşturun.</td><td>CTRL+N</td></tr>
+            <tr><td>Yeni bir slayt ekleyin.</td><td>CTRL+M</td></tr>
+            <tr><td>Seçili metne kalın biçimlendirme uygulayın.</td><td>CTRL+B</td></tr>
+            <tr><td>Yazı tipi iletişim kutusunu açın.</td><td>CTRL+T</td></tr>
+            <tr><td>Seçili metni, nesneleri veya slaytları kesin</td><td>CTRL+X</td></tr>
+            <tr><td>Seçili metni, nesneleri veya slaytları kopyalayın</td><td>CTRL+C</td></tr>
+            <tr><td>Kesilen veya kopyalanan metni, nesneleri veya slaytları yapıştırın</td><td>CTRL+V</td></tr>
+            <tr><td>Bir bağlantı ekleyin</td><td>CTRL+K</td></tr>
+            <tr><td>Yeni bir yorum ekleyin.</td><td>CTRL+ALT+M</td></tr>
+            <tr><td>Son yapılan işlemi geri alın</td><td>CTRL+Z</td></tr>
+            <tr><td>Son yapılan işlemi yineleyin</td><td>CTRL+Y</td></tr>
+            <tr><td>Sonraki slayta geçin</td><td>PAGE DOWN</td></tr>
+            <tr><td>Önceki slayta geçin</td><td>PAGE UP</td></tr>
+            <tr><td>Slayt gösterimini başlatın</td><td>F5</td></tr>
+            <tr><td>Slayt gösterimini sonlandırın</td><td>ESC</td></tr>
+            <tr><td>Bir sunumu yazdırın.</td><td>CTRL+P</td></tr>
+            <tr><td>Sunumu kaydedin</td><td>CTRL+S</td></tr>
+            <tr><td>PowerPoint'u kapatın.</td><td>CTRL+Q</td></tr>
+            <tr><td>Konuşmacı görünümüne geç</td><td>ALT+F5</td></tr>
+            <tr><td>Slayt gösterisine geç</td><td>F5</td></tr>
+            <tr><td>Özet ve Miniyatur Görünüm arasında geçiş yap</td><td>CTRL+SHIFT+TAB</td></tr>
+            <tr><td>Tam Ekran Görünümüne Geç (Menüleri Gizle)</td><td>CTRL+F1</td></tr>
+            <tr><td>Kılavuz çizgileri aç veya kapat</td><td>ALT+F9</td></tr>
+            <tr><td>İz düzenini aç veya kapat</td><td>SHIFT+F9</td></tr>
+            <tr><td>Normal Görünümde Alanlar Arasında Dolaşma Saat Yönünde</td><td>F6</td></tr>
+            <tr><td>Normal Görünümde Alanlar Arasında Dolaşma Saat Yönünün Tersinde</td><td>SHIFT+F6</td></tr>
+            <tr><td>Miniyatur ve Özet Görünümleri arasında geçiş yapma</td><td>CTRL+SHIFT+TAB</td></tr>
+            <tr><td>Özet Görünümünde 1. Düzey Başlıkları Gösterme</td><td>ALT+SHIFT+1</td></tr>
+            <tr><td>Bir Başlığı altındaki metni Özet Görünümünde genişletme</td><td>ALT+SHIFT+ARTI (+)</td></tr>
+            <tr><td>Bir Başlık Altındaki Metni Özet Görünümünde Daraltma</td><td>ALT+SHIFT-EKSİ (-)</td></tr>
+            <tr><td>Özet Görünümündeki Tüm Metni Seçme</td><td>CTRL+A</td></tr>
+            <tr><td>Slaytların tamamını Slayt Düzeni veya Miniyatur Görünüm bölgesinde seçme</td><td>CTRL+A</td></tr>
+            <tr><td>Yardım Menüsünü Açma</td><td>F1</td></tr>
+        </tbody>
+    </table>
+
+    <h3>TEST SORULARI</h3>
+    <form id="quizForm">
+        <div class="question-box" id="q1">
+            <span class="question-title">1.PowerPoint ne tür bir programdır?</span>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> a) Sunu Tasarım</label>
+                <label><input type="radio" name="q1" value="b"> b) Elektronik Hesaplama</label>
+                <label><input type="radio" name="q1" value="c"> c) Kelime İşlemci</label>
+                <label><input type="radio" name="q1" value="d"> d) İşletim Sistemi</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q2">
+            <span class="question-title">2.PowerPoint programının kullanım amacı hangisidir?</span>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> a) Resim yapmak</label>
+                <label><input type="radio" name="q2" value="b"> b) Hesaplama yaptırmak ve tablo oluşturmak</label>
+                <label><input type="radio" name="q2" value="c"> c) Bir konuyu anlatmak için sunum hazırlamak</label>
+                <label><input type="radio" name="q2" value="d"> d) Bilgisayarda yazı yazmak ve düzenlemeler yapmak</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q3">
+            <span class="question-title">3.PowerPoint’e özgü menüler hangi seçenekte birlikte verilmiştir?</span>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> a) Ekle, Animasyon, Slayt Gösterisi</label>
+                <label><input type="radio" name="q3" value="b"> b) Geçişler, Animasyonlar, Slayt Gösterisi</label>
+                <label><input type="radio" name="q3" value="c"> c) Giriş, Tasarım, Animasyon</label>
+                <label><input type="radio" name="q3" value="d"> d) Tasarım, Animasyon, Görünüm</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q4">
+            <span class="question-title">4.Slaytların küçük ekran görüntülerini aşağıdaki panellerden hangisinde görebiliriz?</span>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a"> a) Anahat</label>
+                <label><input type="radio" name="q4" value="b"> b) Görünüm Çubuğu</label>
+                <label><input type="radio" name="q4" value="c"> c) Slayt</label>
+                <label><input type="radio" name="q4" value="d"> d) Not</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q5">
+            <span class="question-title">5.Aşağıdaki uzantılardan hangisi PowerPoint programının uzantısıdır?</span>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> a) .pptx</label>
+                <label><input type="radio" name="q5" value="b"> b) .docx</label>
+                <label><input type="radio" name="q5" value="c"> c) .xlsx</label>
+                <label><input type="radio" name="q5" value="d"> d) .ppsx</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q6">
+            <span class="question-title">6.PowerPoint’te her sayfa …………..denir. Bütün sayfalar birleşince …………..oluşturur.</span>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a"> a) Sayfa–Belge</label>
+                <label><input type="radio" name="q6" value="b"> b) Slayt–Sunu</label>
+                <label><input type="radio" name="q6" value="c"> c) Sayfa–Kitap</label>
+                <label><input type="radio" name="q6" value="d"> d) Belge–Dosya</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q7">
+            <span class="question-title">7. Slaytların zemin rengini nasıl değiştirebiliriz?</span>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a"> a) Görünüm – Slayt Gösterisi - (Renk seçilir)</label>
+                <label><input type="radio" name="q7" value="b"> b) Tasarım - Arka plan stilleri</label>
+                <label><input type="radio" name="q7" value="c"> c) Biçim - Tasarımı Uygula - (Renk seçilir)</label>
+                <label><input type="radio" name="q7" value="d"> d) Slayt Gösterisi - Özel Canlandırma</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q8">
+            <span class="question-title">8. Slâyt sıralayıcısı görünümündeyken slâyt nasıl silinir?</span>
+            <div class="options">
+                <label><input type="radio" name="q8" value="a"> a) Slâyt seçilir Delete Tuşuna basılır.</label>
+                <label><input type="radio" name="q8" value="b"> b) Slâyt Görünümünde Slâyt silinmez.</label>
+                <label><input type="radio" name="q8" value="c"> c) Slâyt seçilir kopyala komutu verilerek silinir.</label>
+                <label><input type="radio" name="q8" value="d"> d) Hiçbiri</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q9">
+            <span class="question-title">9. Bir sunumdaki yazı tipi nereden değiştirilir?</span>
+            <div class="options">
+                <label><input type="radio" name="q9" value="a"> a) Düzen/Nesne</label>
+                <label><input type="radio" name="q9" value="b"> b) Giriş/Yazı tipi</label>
+                <label><input type="radio" name="q9" value="c"> c) Görünüm/Normal</label>
+                <label><input type="radio" name="q9" value="d"> d) Biçim/Slayt tasarımı</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q10">
+            <span class="question-title">10. Slaytlara kendinize ait bir resmi eklemek için aşağıdaki işlemlerden hangisi yapılır?</span>
+            <div class="options">
+                <label><input type="radio" name="q10" value="a"> a) Ekle – Küçük resimler</label>
+                <label><input type="radio" name="q10" value="b"> b) Ekle – WordArt</label>
+                <label><input type="radio" name="q10" value="c"> c) Ekle – Resim</label>
+                <label><input type="radio" name="q10" value="d"> d) Görünüm-Küçük resimler</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q11">
+            <span class="question-title">11. Flash bellekteki bir ses dosyasının sunuya eklenmesi için hangi yol izlenmelidir?</span>
+            <div class="options">
+                <label><input type="radio" name="q11" value="a"> a) Ekle – Ses – Dosyadan Ses</label>
+                <label><input type="radio" name="q11" value="b"> b) Ekle – Ses – Ses Kaydet</label>
+                <label><input type="radio" name="q11" value="c"> c) Slayt Gösterisi – Ses – Dosyadan Ses</label>
+                <label><input type="radio" name="q11" value="d"> d) Slayt Gösterisi – Ses – Ses Kaydet</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q12">
+            <span class="question-title">12. Slayt geçişi ne demektir?</span>
+            <div class="options">
+                <label><input type="radio" name="q12" value="a"> a) Slayt içindeki yazı, resim gibi öğelerin canlandırılmasıdır.</label>
+                <label><input type="radio" name="q12" value="b"> b) Sunular arasındaki canlandırmalardır.</label>
+                <label><input type="radio" name="q12" value="c"> c) Bir slayttan diğerine geçerken yapılan canlandırmadır.</label>
+                <label><input type="radio" name="q12" value="d"> d) Slaytların yazıcıya gönderilmesidir.</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q13">
+            <span class="question-title">13. Slaytlara geçiş hangi sekmeden verilir?</span>
+            <div class="options">
+                <label><input type="radio" name="q13" value="a"> a) Ekle</label>
+                <label><input type="radio" name="q13" value="b"> b) Tasarım</label>
+                <label><input type="radio" name="q13" value="c"> c) Slayt gösterisi</label>
+                <label><input type="radio" name="q13" value="d"> d) Animasyonlar</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q14">
+            <span class="question-title">14. Bir sunumu sunarken, slâyt geçişlerinin fare tıklamasıyla geçmesini hangi menüden hangi özellikle ayarlayabiliriz?</span>
+            <div class="options">
+                <label><input type="radio" name="q14" value="a"> a) Animasyonlar – Slâyt Geçişi</label>
+                <label><input type="radio" name="q14" value="b"> b) Slâyt Gösterisi – Gösteriyi Görüntüle</label>
+                <label><input type="radio" name="q14" value="c"> c) Slâyt Gösterisi – Özel Animasyon</label>
+                <label><input type="radio" name="q14" value="d"> d) Biçim – Slâyt Düzeni</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q15">
+            <span class="question-title">15. Slayt gösterisini başlatmak için ……, gösteriden çıkmak için klavyeden …… tuşuna basılır.</span>
+            <div class="options">
+                <label><input type="radio" name="q15" value="a"> a) F4 – ESC</label>
+                <label><input type="radio" name="q15" value="b"> b) F5 – ESC</label>
+                <label><input type="radio" name="q15" value="c"> c) ESC – F9</label>
+                <label><input type="radio" name="q15" value="d"> d) F8 – ESC</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q16">
+            <span class="question-title">16.Powerpoint’te nesneleri canlandırma(animasyon) ne için yapılır?</span>
+            <div class="options">
+                <label><input type="radio" name="q16" value="a"> a) Canlandırılmayan nesneler sunumda gözükmez</label>
+                <label><input type="radio" name="q16" value="b"> b) Sunumun daha hızlı olması için</label>
+                <label><input type="radio" name="q16" value="c"> c) Sunumun daha etkileyici ve anlaşılır olması için</label>
+                <label><input type="radio" name="q16" value="d"> d) Canlandırma olmadan sunum olmaz</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q17">
+            <span class="question-title">17.PowerPoint sunumuzu hangi kısayol tuşu ile gösteri olarak başlatırız?</span>
+            <div class="options">
+                <label><input type="radio" name="q17" value="a"> a) F1</label>
+                <label><input type="radio" name="q17" value="b"> b) F2</label>
+                <label><input type="radio" name="q17" value="c"> c) F4</label>
+                <label><input type="radio" name="q17" value="d"> d) F5</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q18">
+            <span class="question-title">18. işaretinin görevi nedir?</span>
+            <div class="options">
+                <label><input type="radio" name="q18" value="a"> a) Yazıyı kalın yapar</label>
+                <label><input type="radio" name="q18" value="b"> b) Yazıyı büyütür</label>
+                <label><input type="radio" name="q18" value="c"> c) WordArt ekler</label>
+                <label><input type="radio" name="q18" value="d"> d) SmartArt ekler</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q19">
+            <span class="question-title">19. PowerPoint programındaki slaytların tümüne ne ad verilir?</span>
+            <div class="options">
+                <label><input type="radio" name="q19" value="a"> a) Doküman</label>
+                <label><input type="radio" name="q19" value="b"> b) Şablon</label>
+                <label><input type="radio" name="q19" value="c"> c) Sunum</label>
+                <label><input type="radio" name="q19" value="d"> d) Sayfa</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q20">
+            <span class="question-title">20. PowerPoint’te metinler nereye yazılır?</span>
+            <div class="options">
+                <label><input type="radio" name="q20" value="a"> a) Dikdörtgen şekli çizip içerisine yazılır</label>
+                <label><input type="radio" name="q20" value="b"> b) Kare çizip içerisine yazılır</label>
+                <label><input type="radio" name="q20" value="c"> c) Metin kutusu eklenip içerisine yazılır</label>
+                <label><input type="radio" name="q20" value="d"> d) Slayt’a direk yazarız</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q21">
+            <span class="question-title">21. PowerPoint‟teki bir sununun slâytlarına tarih ve saat ekleme işlemini aşağıdakilerden hangisi ile yaparız?</span>
+            <div class="options">
+                <label><input type="radio" name="q21" value="A"> A-) Araçlar-Biçim</label>
+                <label><input type="radio" name="q21" value="B"> B-) Görünüm- Yakınlaştır</label>
+                <label><input type="radio" name="q21" value="C"> C-) Düzen- Özel Yapıştır</label>
+                <label><input type="radio" name="q21" value="D"> D-) Ekle-Tarih ve Saat</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q22">
+            <span class="question-title">22. Aşağıdakilerden hangisi PowerPoint dosyadır?</span>
+            <div class="options">
+                <label><input type="radio" name="q22" value="a"> a) sunularım.doc</label>
+                <label><input type="radio" name="q22" value="b"> b) bilgi.xls</label>
+                <label><input type="radio" name="q22" value="c"> c) okuldizayn.pptx</label>
+                <label><input type="radio" name="q22" value="d"> d) ppt.powerpoint</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q23">
+            <span class="question-title">23. Aşağıdakilerden hangisi sunuyla ilgili kavramlardan birisi değildir?</span>
+            <div class="options">
+                <label><input type="radio" name="q23" value="a"> a) Belirli bir konu hakkında hazırlanan gösteridir.</label>
+                <label><input type="radio" name="q23" value="b"> b) Slâytlardan meydana gelir.</label>
+                <label><input type="radio" name="q23" value="c"> c) Sunu dosyalarının uzantısı .pptx’dir.</label>
+                <label><input type="radio" name="q23" value="d"> d) Slâytlar Sunulardan oluşur.</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q24">
+            <span class="question-title">24.Power Point‟e yeni slayt hangi kısayol tuşu ile eklenir?</span>
+            <div class="options">
+                <label><input type="radio" name="q24" value="a"> a)Ctrl+N</label>
+                <label><input type="radio" name="q24" value="b"> b)Ctrl+M</label>
+                <label><input type="radio" name="q24" value="c"> c)Ctrl+C</label>
+                <label><input type="radio" name="q24" value="d"> d)Ctrl+E</label>
+            </div>
+        </div>
+
+        <div class="question-box" id="q25">
+            <span class="question-title">25.PowerPoint‟ te slayta grafik eklemek için hangi menü veya komut kullanılır?</span>
+            <div class="options">
+                <label><input type="radio" name="q25" value="a"> a)Biçim/Resim/Grafik</label>
+                <label><input type="radio" name="q25" value="b"> b)Ekle/Grafik</label>
+                <label><input type="radio" name="q25" value="c"> c)Görünüm/Grafik</label>
+                <label><input type="radio" name="q25" value="d"> d)Slayt Gösterisi / Resim / Grafik</label>
+            </div>
+        </div>
+
+        <button type="button" onclick="kontrolEt()">Kontrol Et</button>
+        <div id="sonucAlani"></div>
+    </form>
+
+    <div class="cevap-anahtari">
+        <strong>CEVAPLAR</strong><br>
+        1-A 10-C 19-C<br>
+        2-C 11-A 20-C<br>
+        3-B 12-C 21-D<br>
+        4-C 13-D 22-C<br>
+        5-A 14-A 23-D<br>
+        6-B 15-B 24-B<br>
+        7-B 16-C 25-B<br>
+        8-A 17-D<br>
+        9-B 18-C
+    </div>
+
+</div>
+
+<script>
+    function kontrolEt() {
+        var cevaplar = {
+            q1: "a", q2: "c", q3: "b", q4: "c", q5: "a",
+            q6: "b", q7: "b", q8: "a", q9: "b", q10: "c",
+            q11: "a", q12: "c", q13: "d", q14: "a", q15: "b",
+            q16: "c", q17: "d", q18: "c", q19: "c", q20: "c",
+            q21: "D", q22: "c", q23: "d", q24: "b", q25: "b"
+        };
+
+        var dogruSayisi = 0;
+        var toplamSoru = 25;
+
+        for (var i = 1; i <= toplamSoru; i++) {
+            var soruID = "q" + i;
+            var soruDiv = document.getElementById(soruID);
+            var secilen = document.querySelector('input[name="' + soruID + '"]:checked');
+
+            // Önceki stilleri temizle
+            soruDiv.classList.remove("correct", "wrong");
+
+            if (secilen) {
+                if (secilen.value.toLowerCase() === cevaplar[soruID].toLowerCase()) {
+                    soruDiv.classList.add("correct");
+                    dogruSayisi++;
+                } else {
+                    soruDiv.classList.add("wrong");
+                }
+            }
+        }
+
+        var sonucYazisi = document.getElementById("sonucAlani");
+        sonucYazisi.innerHTML = "Doğru Sayısı: " + dogruSayisi + " / " + toplamSoru;
+        
+        // Kullanıcıya yukarı çıkıp sonuçları görmesi için scroll
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+</script>
+
+</body>
+</html>
