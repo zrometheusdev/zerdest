@@ -1131,7 +1131,143 @@
 </section>
 </section>
 </div>
+<div id="word-quiz-section" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; border: 2px solid #2b579a; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    
+    <div style="text-align: center; border-bottom: 2px solid #2b579a; margin-bottom: 20px; padding-bottom: 10px;">
+        <h2 style="color: #2b579a; margin: 0;">Microsoft Word: Nerede, Nasil Yapilir?</h2>
+        <p style="color: #666; font-size: 14px;">40 Soruluk Uygulama Testi</p>
+    </div>
 
+    <div id="quiz-container">
+        <div id="question-area">
+            <h3 id="q-text" style="color: #333; min-height: 50px;">Soru yukleniyor...</h3>
+            <div id="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                </div>
+        </div>
+
+        <div id="result-area" style="display: none; text-align: center; padding: 30px;">
+            <h2 style="color: #2b579a;">Sinav Tamamlandi!</h2>
+            <div style="font-size: 48px; margin: 20px 0;" id="final-score">0 / 40</div>
+            <button onclick="location.reload()" style="padding: 10px 25px; background: #2b579a; color: white; border: none; border-radius: 5px; cursor: pointer;">Tekrar Baslat</button>
+        </div>
+
+        <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 15px;">
+            <div style="font-weight: bold; color: #2b579a;">Skor: <span id="current-score">0</span></div>
+            <div id="progress-text" style="color: #888;">Soru: 1 / 40</div>
+            <button id="next-q-btn" onclick="handleNext()" style="display: none; padding: 8px 20px; background: #27ae60; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Sonraki Soru</button>
+        </div>
+    </div>
+
+    <script>
+        const wordQuestions = [
+            { q: "Sayfa kenar bosluklarini ayarlamak icin hangi yol izlenmelidir?", a: ["Duzen > Sayfa Yapisi > Kenar Bosluklari", "Ekle > Sayfa Yapisi", "Tasarim > Sayfa Yapisi", "Giris > Paragraf"], c: 0 },
+            { q: "Belgeye tablo eklemek icin hangi sekme kullanilir?", a: ["Duzen", "Ekle", "Giris", "Dosya"], c: 1 },
+            { q: "Yazi tipini (font) ve boyutunu degistirmek icin hangi grup kullanilir?", a: ["Ekle > Yazi Tipi", "Gorunum > Yazi Tipi", "Giris > Yazi Tipi", "Tasarim > Yazi Tipi"], c: 2 },
+            { q: "Sayfayi 'Yatay' veya 'Dikey' yapmak icin hangi yol izlenir?", a: ["Duzen > Sayfa Yapisi > Yonlendirme", "Giris > Paragraf", "Ekle > Sayfalar", "Tasarim > Arka Plan"], c: 0 },
+            { q: "Metni iki yana yaslamak icin hangi grup kullanilir?", a: ["Giris > Yazi Tipi", "Duzen > Sayfa Yapisi", "Giris > Paragraf", "Ekle > Metin"], c: 2 },
+            { q: "Belgeye sayfa numarasi eklemek icin hangi yol izlenir?", a: ["Ekle > Ustbilgi ve Altbilgi", "Giris > Sayfa Yapisi", "Duzen > Sayfalar", "Basvurular > Dizin"], c: 0 },
+            { q: "Belgedeki bir kelimeyi baska bir kelimeyle degistirmek (Replace) nerededir?", a: ["Gorunum > Navigasyon", "Giris > Duzenleme > Degistir", "Dosya > Secenekler", "Ekle > Metin"], c: 1 },
+            { q: "Otomatik 'Icindekiler Tablosu' olusturmak icin hangi sekme kullanilir?", a: ["Ekle", "Tasarim", "Basvurular", "Gozden Gecir"], c: 2 },
+            { q: "Belge arkasina 'Filigran' eklemek nerede bulunur?", a: ["Ekle > Metin", "Tasarim > Sayfa Arka Plani", "Duzen > Sayfa Yapisi", "Giris > Paragraf"], c: 1 },
+            { q: "Metni sutunlara (gazete bicimi) bolmek nerede bulunur?", a: ["Duzen > Sayfa Yapisi > Sutunlar", "Ekle > Tablo", "Giris > Paragraf", "Gorunum > Pencere"], c: 0 },
+            { q: "Yazim ve dilbilgisi hatalarini denetlemek icin hangi sekme kullanilir?", a: ["Giris", "Gozden Gecir", "Gorunum", "Ekle"], c: 1 },
+            { q: "Cetveli gorunur yapmak veya gizlemek nerede bulunur?", a: ["Duzen > Sayfa Yapisi", "Giris > Goster", "Gorunum > Goster > Cetvel", "Dosya > Yazdir"], c: 2 },
+            { q: "Belgeye dipnot eklemek icin hangi yol izlenir?", a: ["Basvurular > Dipnotlar", "Ekle > Altbilgi", "Duzen > Sayfa Yapisi", "Giris > Pano"], c: 0 },
+            { q: "Metni PDF olarak kaydetmek icin hangi sekme kullanilir?", a: ["Ekle", "Dosya > Farkli Kaydet", "Gozden Gecir", "Gorunum"], c: 1 },
+            { q: "Sayfanin boyutunu (A4, A3 vb.) degistirmek nerede bulunur?", a: ["Duzen > Sayfa Yapisi > Boyut", "Giris > Duzenleme", "Ekle > Sayfalar", "Tasarim > Temalar"], c: 0 },
+            { q: "Paragrafin ilk harfini buyutmek (Drop Cap) nerede bulunur?", a: ["Giris > Yazi Tipi", "Ekle > Metin > Baslangici Buyut", "Duzen > Paragraf", "Tasarim > Stil"], c: 1 },
+            { q: "Secili metni 'Kalin' veya 'İtalik' yapmak hangi gruptadir?", a: ["Ekle > Yazi Tipi", "Giris > Yazi Tipi", "Duzen > Yazi Tipi", "Gorunum > Stil"], c: 1 },
+            { q: "Toplam sozcuk sayisini gormek nerede bulunur?", a: ["Gozden Gecir > Yazim > Sozcuk Sayimi", "Ekle > Metin", "Giris > Duzenleme", "Dosya > Bilgi"], c: 0 },
+            { q: "Sayfaya kenarlik (cerceve) eklemek nerede bulunur?", a: ["Giris > Paragraf", "Duzen > Sayfa Yapisi", "Tasarim > Sayfa Kenarliklari", "Ekle > Sekiller"], c: 2 },
+            { q: "Satir araligini artirmak icin hangi grup kullanilir?", a: ["Giris > Paragraf", "Giris > Yazi Tipi", "Ekle > Semboller", "Tasarim > Sayfa Yapisi"], c: 0 },
+            { q: "Pano (Kopyalama gecmisi) nerede acilir?", a: ["Ekle > Pano", "Giris > Pano (kucuk ok)", "Dosya > Gecmis", "Gorunum > Navigasyon"], c: 1 },
+            { q: "Matematiksel denklem eklemek nerede bulunur?", a: ["Giris > Yazi Tipi", "Ekle > Semboller > Denklem", "Basvurular > Dizin", "Tasarim > Nesneler"], c: 1 },
+            { q: "Harf durumunu (Buyuk/Kucuk) degistirmek nerede bulunur?", a: ["Giris > Yazi Tipi > Aa", "Gozden Gecir > Dil", "Duzen > Yazi Tipi", "Ekle > Metin"], c: 0 },
+            { q: "Toplu mektup/etiket hazirlama (Adres Mektup Birlestirme) nerede?", a: ["Basvurular", "Ekle", "Postalar", "Gozden Gecir"], c: 2 },
+            { q: "Ekran goruntusu eklemek nerede bulunur?", a: ["Ekle > Cizimler > Ekran Goruntusu", "Gorunum > Pencere", "Giris > Duzenleme", "Dosya > Yazdir"], c: 0 },
+            { q: "Metne kopru (link) eklemek nerede bulunur?", a: ["Giris > Yazi Tipi", "Ekle > Baglantilar", "Basvurular > Dizin", "Tasarim > Temalar"], c: 1 },
+            { q: "Sayfa rengini degistirmek nerede bulunur?", a: ["Giris > Paragraf", "Duzen > Sayfa Yapisi", "Tasarim > Sayfa Rengi", "Ekle > Sekiller"], c: 2 },
+            { q: "Kapak sayfasi eklemek nerede bulunur?", a: ["Tasarim > Temalar", "Ekle > Sayfalar > Kapak Sayfasi", "Dosya > Yeni", "Duzen > Sayfa Yapisi"], c: 1 },
+            { q: "Belgeyi ikiye bolerek (Split) izlemek nerede bulunur?", a: ["Gorunum > Pencere > Bol", "Duzen > Kesmeler", "Giris > Paragraf", "Dosya > Yazdir"], c: 0 },
+            { q: "Madde isaretleri (Liste) eklemek nerede bulunur?", a: ["Ekle > Metin", "Giris > Paragraf", "Tasarim > Liste", "Gozden Gecir > Yazim"], c: 1 },
+            { q: "Paragraf girintisini ayarlamak nerede bulunur?", a: ["Giris > Yazi Tipi", "Tasarim > Bicimlendirme", "Duzen > Paragraf > Girinti", "Ekle > Sayfalar"], c: 2 },
+            { q: "Geri Al simgesi varsayilan olarak nerededir?", a: ["Giris Sekmesi", "Hizli Erisim Arac Cubugu", "Dosya Menusu", "Gozden Gecir Sekmesi"], c: 1 },
+            { q: "Denetim dilini (Sozluk) degistirmek nerede bulunur?", a: ["Gozden Gecir > Dil", "Giris > Yazi Tipi", "Ekle > Metin", "Dosya > Secenekler"], c: 0 },
+            { q: "SmartArt (Sema) eklemek nerede bulunur?", a: ["Tasarim > Semalar", "Duzen > Nesneler", "Ekle > Cizimler > SmartArt", "Giris > Paragraf"], c: 2 },
+            { q: "Okuma Modu'na gecmek nerede bulunur?", a: ["Dosya > Okuma", "Gorunum > Gorunumler > Okuma Modu", "Ekle > Sayfalar", "Tasarim > Stiller"], c: 1 },
+            { q: "Alt Simge (H2O) eklemek nerede bulunur?", a: ["Giris > Yazi Tipi", "Ekle > Semboller", "Basvurular > Dipnot", "Duzen > Sayfa Yapisi"], c: 0 },
+            { q: "Yeni aciklama (Yorum) eklemek nerede bulunur?", a: ["Giris > Duzenleme", "Gozden Gecir > Aciklamalar", "Ekle > Semboller", "Gorunum > Goster"], c: 1 },
+            { q: "Tum bicimlendirmeyi temizleme (Silgi ikonu) nerede bulunur?", a: ["Duzen > Temizle", "Gorunum > Sil", "Giris > Yazi Tipi", "Ekle > Metin"], c: 2 },
+            { q: "Yalnizca metni koruyarak yapistirmak nerede bulunur?", a: ["Duzen > Yapistir", "Giris > Yapistir > Ozel Yapistir", "Dosya > Ayarlar", "Ekle > Nesne"], c: 1 },
+            { q: "Sayfayi sutunlara ayirmak hangi sekmededir?", a: ["Ekle", "Giris", "Tasarim", "Duzen"], c: 3 }
+        ];
+
+        let currentIdx = 0;
+        let score = 0;
+        let answered = false;
+
+        function loadQ() {
+            answered = false;
+            document.getElementById('next-q-btn').style.display = 'none';
+            const q = wordQuestions[currentIdx];
+            document.getElementById('q-text').innerText = (currentIdx + 1) + ". " + q.q;
+            document.getElementById('progress-text').innerText = "Soru: " + (currentIdx + 1) + " / 40";
+            
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+            
+            q.a.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.style.padding = "12px";
+                btn.style.border = "1px solid #ddd";
+                btn.style.borderRadius = "5px";
+                btn.style.backgroundColor = "#f9f9f9";
+                btn.style.cursor = "pointer";
+                btn.style.textAlign = "left";
+                btn.style.transition = "0.2s";
+                btn.onmouseover = () => { if(!answered) btn.style.backgroundColor = "#e8f0fe"; };
+                btn.onmouseout = () => { if(!answered) btn.style.backgroundColor = "#f9f9f9"; };
+                btn.onclick = () => check(i, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        function check(idx, btn) {
+            if(answered) return;
+            answered = true;
+            const correctIdx = wordQuestions[currentIdx].c;
+            const btns = document.getElementById('options-grid').getElementsByTagName('button');
+            
+            if(idx === correctIdx) {
+                btn.style.backgroundColor = "#27ae60";
+                btn.style.color = "white";
+                score++;
+                document.getElementById('current-score').innerText = score;
+            } else {
+                btn.style.backgroundColor = "#e74c3c";
+                btn.style.color = "white";
+                btns[correctIdx].style.backgroundColor = "#27ae60";
+                btns[correctIdx].style.color = "white";
+            }
+            document.getElementById('next-q-btn').style.display = 'block';
+        }
+
+        function handleNext() {
+            currentIdx++;
+            if(currentIdx < wordQuestions.length) {
+                loadQ();
+            } else {
+                document.getElementById('question-area').style.display = 'none';
+                document.getElementById('next-q-btn').style.display = 'none';
+                document.getElementById('result-area').style.display = 'block';
+                document.getElementById('final-score').innerText = score + " / 40";
+            }
+        }
+
+        loadQ();
+    </script>
+</div>
 <footer>
     <p>Word Uzman Egitim Dokumani - 2026</p>
 </footer>
@@ -1163,4 +1299,5 @@
 
 </body>
 </html>
+
 
