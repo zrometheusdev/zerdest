@@ -1268,6 +1268,208 @@
         loadQ();
     </script>
 </div>
+	<div id="word-svg-quiz-40" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; border: 2px solid #2b579a; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    
+    <div style="text-align: center; border-bottom: 2px solid #2b579a; margin-bottom: 20px; padding-bottom: 10px;">
+        <h2 style="color: #2b579a; margin: 0;">Microsoft Word: Dev Ikon Testi</h2>
+        <p style="color: #666; font-size: 14px;">40 Soruluk Gomulu SVG Gorsel Sinavi</p>
+    </div>
+
+    <div id="svq40-container">
+        <div id="svq40-question-area" style="text-align:center;">
+            <div style="margin-bottom:10px; font-weight:bold; color:#2b579a;" id="svq40-progress">Soru 1</div>
+            
+            <div id="svq40-icon-box" style="height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; background-color:#f4f6f9; border-radius:8px; border:1px solid #ddd;">
+                </div>
+
+            <h3 id="svq40-text" style="color: #333; min-height: 40px; margin-bottom:20px;">Soru yukleniyor...</h3>
+            
+            <div id="svq40-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align:left;">
+                </div>
+        </div>
+
+        <div id="svq40-result" style="display: none; text-align: center; padding: 30px;">
+            <h2 style="color: #2b579a;">Test Tamamlandi!</h2>
+            <p>Tebrikler, 40 soruyu tamamladin.</p>
+            <div style="font-size: 48px; margin: 20px 0; color:#27ae60;" id="svq40-score">0</div>
+            <button onclick="location.reload()" style="padding: 12px 30px; background: #2b579a; color: white; border: none; border-radius: 5px; cursor: pointer; font-size:16px;">Testi Tekrarla</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 40 ADET SVG IKON KODU (TUMU GOMULU) ---
+        const svg40 = {
+            // 1-10: Temel Dosya ve Duzenleme
+            save: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#2b579a"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>`,
+            open: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#f39c12"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>`,
+            newdoc: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#27ae60"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>`,
+            print: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h3v4h14v-4h3v-6c0-1.66-1.34-3-3-3zm-9 11H8v-5h2v5zm6 0h-2v-5h2v5zm-2-9H8V5h6v5z"/></svg>`,
+            cut: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#e74c3c"><path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.89 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.89 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z"/></svg>`,
+            copy: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#f39c12"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>`,
+            paste: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#27ae60"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>`,
+            undo: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#8e44ad"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>`,
+            redo: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#8e44ad"><path d="M18.4 10.6C16.55 8.99 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16a8.002 8.002 0 0 1 7.6-5.5c1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"/></svg>`,
+            find: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#2b579a"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>`,
+            
+            // 11-20: Yazi Bicimlendirme
+            bold: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/></svg>`,
+            italic: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"/></svg>`,
+            underline: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z"/></svg>`,
+            strikethrough: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M10 19h4v-3h-4v3zM5 4v3h5v3h4V7h5V4H5zM3 14h18v-2H3v2z"/></svg>`,
+            fontcolor: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#e74c3c"><path d="M15.245 13.275h-6.49l-.81 2.165H5l5.608-14.4h2.784l5.608 14.4h-2.941l-.814-2.165zm-1.003-2.678l-2.242-5.978-2.243 5.978h4.485zM0 20h24v4H0v-4z"/></svg>`,
+            highlight: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#f1c40f"><path d="M18.5 3.5l-4 4L19 12l4-4-4.5-4.5zM13 18H7l4-4L18 7l-5-5-4 4-4 4 5 5L13 18zM2 22h20v-3H2v3z"/></svg>`,
+            fontsize: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/></svg>`,
+            fontfamily: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><text x="2" y="18" font-family="serif" font-size="20">T</text><text x="14" y="18" font-family="sans-serif" font-size="20">T</text></svg>`,
+            growfont: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M5.12 14h1.5l.66-1.74h3.41l.66 1.74h1.5L9.39 5h-1.2L5.12 14zM8.99 7.98L10.01 11H7.97l1.02-3.02zM14 20h8v2h-8v-2zm0-6h8v2h-8v-2zm0-6h8v2h-8V8zM3 20h8v2H3v-2zm0-6h8v2H3v-2z"/></svg>`,
+            shrinkfont: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M5.12 14h1.5l.66-1.74h3.41l.66 1.74h1.5L9.39 5h-1.2L5.12 14zM8.99 7.98L10.01 11H7.97l1.02-3.02zM14 20h8v2h-8v-2zm0-6h8v2h-8v-2z"/></svg>`,
+            
+            // 21-30: Paragraf ve Hizalama
+            leftalign: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z"/></svg>`,
+            centeralign: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#2b579a"><path d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z"/></svg>`,
+            rightalign: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z"/></svg>`,
+            justify: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M3 21h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18v-2H3v2zm0-4h18V7H3v2zm0-6v2h18V3H3z"/></svg>`,
+            bullets: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12.17c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/></svg>`,
+            numbering: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M4 10.5V12h2v1H3v-1l2-1.5H3v-1h3v1H4zm1.5 5.5h-3v1h1.5v2.5h-2v1h3v-1.5l-1.5-1v-.5h1V16zm-2-7.5l-1-1V6l3-1.5v1H4v3h1V9h1v.5H3.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/></svg>`,
+            indentin: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M11 17h10v-2H11v2zm-8-5l4 4V8l-4 4zm0 9h18v-2H3v2zM3 3v2h18V3H3zm8 6h10V7H11v2zm0 4h10v-2H11v2z"/></svg>`,
+            indentout: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M11 17h10v-2H11v2zm-8-5l4 4V8l-4 4zm0 9h18v-2H3v2zM3 3v2h18V3H3zm8 6h10V7H11v2zm0 4h10v-2H11v2z"/></svg>`, // Ayni ikon, soruda anlasilir
+            linespacing: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M6 7h2.5L5 3.5 1.5 7H4v10H1.5L5 20.5 8.5 17H6V7zm4-2v2h12V5H10zm0 14h12v-2H10v2zm0-6h12v-2H10v2z"/></svg>`,
+            shading: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#3498db"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 19V5h14v14H5zm2-2h10v-2H7v2zm0-4h10v-2H7v2zm0-4h10V7H7v2z"/></svg>`,
+            
+            // 31-40: Ekleme ve Digerleri
+            table: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 19V5h14v14H5zm2-2h10v-2H7v2zm0-4h10v-2H7v2zm0-4h10V7H7v2z"/></svg>`,
+            picture: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#27ae60"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>`,
+            shapes: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#f39c12"><path d="M2 2h20v20H2V2zm2 2v16h16V4H4z"/><circle cx="12" cy="12" r="6"/></svg>`,
+            chart: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#e74c3c"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>`,
+            header: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#2b579a"><path d="M3 3v18h18V3H3zm16 4H5V5h14v2z"/></svg>`,
+            footer: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#2b579a"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3v-2h18v2z"/></svg>`,
+            pagenum: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM10 15h2v-4h-2v4zM7 7h10v2H7V7z"/></svg>`,
+            textbox: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#8e44ad"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>`,
+            symbol: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#333"><text x="2" y="18" font-family="serif" font-size="24">Ω</text></svg>`,
+            zoom: `<svg viewBox="0 0 24 24" width="64" height="64" fill="#2b579a"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg>`
+        };
+
+        // --- 40 ADET SORU (TUMU GORSELLI) ---
+        const sv40Questions = [
+            // 1-10
+            { icon: svg40.save, q: "Bu 'Disket' simgesi ne ise yarar?", a: ["Kaydet", "Sil", "Yazdir", "Yeni"], c: 0 },
+            { icon: svg40.open, q: "Bu simge (Klasor Ac) ne yapar?", a: ["Kaydet", "Kapat", "Dosya Ac", "Yeni"], c: 2 },
+            { icon: svg40.newdoc, q: "Bu simge (Bos Sayfa) ne olusturur?", a: ["Yeni Belge", "Tablo", "Resim", "Klasor"], c: 0 },
+            { icon: svg40.print, q: "Bu 'Yazici' simgesi ne ise yarar?", a: ["Belgeyi Yazdir", "Belgeyi Sil", "Kaydet", "Kopyala"], c: 0 },
+            { icon: svg40.cut, q: "Bu 'Makas' simgesi ne yapar?", a: ["Kopyala", "Kes", "Yapistir", "Sil"], c: 1 },
+            { icon: svg40.copy, q: "Bu 'Iki Kagit' simgesi ne yapar?", a: ["Kes", "Yapistir", "Kopyala", "Tas"], c: 2 },
+            { icon: svg40.paste, q: "Bu 'Pano' simgesi ne ise yarar?", a: ["Kes", "Kaydet", "Yapistir", "Sil"], c: 2 },
+            { icon: svg40.undo, q: "Bu 'Geri Ok' simgesi ne yapar?", a: ["Geri Al", "Ileri Al", "Yenile", "Sil"], c: 0 },
+            { icon: svg40.redo, q: "Bu 'Ileri Ok' simgesi ne yapar?", a: ["Geri Al", "Yinele (Ileri Al)", "Kapat", "Kaydet"], c: 1 },
+            { icon: svg40.find, q: "Bu 'Buyutec' simgesi ne ise yarar?", a: ["Bul", "Degistir", "Git", "Sec"], c: 0 },
+            
+            // 11-20
+            { icon: svg40.bold, q: "Bu 'K' harfi metni nasil yapar?", a: ["Kalin", "Egik", "Alti Cizili", "Buyuk"], c: 0 },
+            { icon: svg40.italic, q: "Bu 'T' harfi metni nasil yapar?", a: ["Kalin", "Egik (Italik)", "Alti Cizili", "Kucuk"], c: 1 },
+            { icon: svg40.underline, q: "Bu 'A' harfi (alti cizili) ne yapar?", a: ["Kalin", "Egik", "Metnin Altini Cizer", "Metnin Ustunu Cizer"], c: 2 },
+            { icon: svg40.strikethrough, q: "Bu 'abc' (ustu cizili) simge ne yapar?", a: ["Alti Cizili", "Ustu Cizili", "Kalin", "Golge"], c: 1 },
+            { icon: svg40.fontcolor, q: "Bu 'A' harfi (renkli) neyi degistirir?", a: ["Arka Plan Rengi", "Yazi Tipi Rengi", "Kenarlik Rengi", "Sayfa Rengi"], c: 1 },
+            { icon: svg40.highlight, q: "Bu 'Kalem' simgesi ne yapar?", a: ["Vurgu Rengi (Fosforlu)", "Yazi Rengi", "Silgi", "Cizim"], c: 0 },
+            { icon: svg40.fontsize, q: "Bu sayi kutusu (Punto) neyi degistirir?", a: ["Yazi Tipi", "Yazi Boyutu", "Satir Araligi", "Kenar Boslugu"], c: 1 },
+            { icon: svg40.fontfamily, q: "Bu yazi kutusu neyi degistirir?", a: ["Yazi Tipi Ailesi (Font)", "Boyut", "Renk", "Stil"], c: 0 },
+            { icon: svg40.growfont, q: "Bu buyuk 'A' simgesi ne yapar?", a: ["Yaziyi Kucultur", "Yaziyi Buyutur", "Yaziyi Siler", "Rengini Degistirir"], c: 1 },
+            { icon: svg40.shrinkfont, q: "Bu kucuk 'A' simgesi ne yapar?", a: ["Yaziyi Buyutur", "Yaziyi Kucultur", "Alti Cizili Yapar", "Kalinlastirir"], c: 1 },
+            
+            // 21-30
+            { icon: svg40.leftalign, q: "Bu simge metni nereye hizalar?", a: ["Sola", "Saga", "Ortaya", "Iki Yana"], c: 0 },
+            { icon: svg40.centeralign, q: "Bu simge metni nereye hizalar?", a: ["Sola", "Saga", "Ortaya", "Iki Yana"], c: 2 },
+            { icon: svg40.rightalign, q: "Bu simge metni nereye hizalar?", a: ["Sola", "Saga", "Ortaya", "Iki Yana"], c: 1 },
+            { icon: svg40.justify, q: "Bu simge metni nasil hizalar?", a: ["Sola", "Saga", "Ortaya", "Iki Yana Yasla"], c: 3 },
+            { icon: svg40.bullets, q: "Bu simge ne ekler?", a: ["Numarali Liste", "Madde Isaretleri", "Tablo", "Resim"], c: 1 },
+            { icon: svg40.numbering, q: "Bu simge ne ekler?", a: ["Madde Isaretleri", "Numaralandirma", "Baslik", "Alt Bilgi"], c: 1 },
+            { icon: svg40.indentin, q: "Bu simge ne yapar?", a: ["Girintiyi Azaltir", "Girintiyi Artirir", "Sola Hizalar", "Saga Hizalar"], c: 1 },
+            { icon: svg40.indentout, q: "Bu simge ne yapar?", a: ["Girintiyi Artirir", "Girintiyi Azaltir", "Ortalar", "Iki Yana Yaslar"], c: 1 },
+            { icon: svg40.linespacing, q: "Bu ok simgesi neyi ayarlar?", a: ["Satir Araligi", "Yazi Boyutu", "Kenar Boslugu", "Hizalama"], c: 0 },
+            { icon: svg40.shading, q: "Bu kova simgesi ne yapar?", a: ["Yazi Rengi", "Golgelendirme (Arka Plan)", "Kenarlik", "Sayfa Rengi"], c: 1 },
+            
+            // 31-40
+            { icon: svg40.table, q: "Bu izgara simgesi ne ekler?", a: ["Tablo", "Resim", "Sekil", "Grafik"], c: 0 },
+            { icon: svg40.picture, q: "Bu dag manzarasi simgesi ne ekler?", a: ["Tablo", "Resim", "Sekil", "Simge"], c: 1 },
+            { icon: svg40.shapes, q: "Bu kare ve daire simgesi ne ekler?", a: ["Resim", "Tablo", "Sekiller", "Grafik"], c: 2 },
+            { icon: svg40.chart, q: "Bu sutunlar simgesi ne ekler?", a: ["Tablo", "Sekil", "Grafik (Chart)", "Resim"], c: 2 },
+            { icon: svg40.header, q: "Bu sayfa ustu simgesi ne ekler?", a: ["Alt Bilgi", "Ust Bilgi", "Sayfa Numarasi", "Filigran"], c: 1 },
+            { icon: svg40.footer, q: "Bu sayfa alti simgesi ne ekler?", a: ["Ust Bilgi", "Alt Bilgi", "Kenar Boslugu", "Baslik"], c: 1 },
+            { icon: svg40.pagenum, q: "Bu '#' simgeli sayfa ne ekler?", a: ["Sayfa Numarasi", "Tarih", "Saat", "Yazar"], c: 0 },
+            { icon: svg40.textbox, q: "Bu 'A' harfli kutu ne ekler?", a: ["Tablo", "Metin Kutusu", "Resim", "Sekil"], c: 1 },
+            { icon: svg40.symbol, q: "Bu 'Omega' simgesi ne ekler?", a: ["Resim", "Tablo", "Simge/Ozel Karakter", "Grafik"], c: 2 },
+            { icon: svg40.zoom, q: "Bu buyutec simgesi ne yapar?", a: ["Yakinlastir/Uzaklastir (Zoom)", "Bul", "Degistir", "Yazdir"], c: 0 }
+        ];
+
+        let sv40Idx = 0;
+        let sv40Score = 0;
+        let sv40Answered = false;
+
+        function loadSvg40Q() {
+            sv40Answered = false;
+            const q = sv40Questions[sv40Idx];
+            
+            document.getElementById('svq40-progress').innerText = "Soru " + (sv40Idx + 1) + " / 40";
+            document.getElementById('svq40-text').innerText = q.q;
+
+            // SVG ikonunu yerlestir
+            document.getElementById('svq40-icon-box').innerHTML = q.icon;
+
+            const optsDiv = document.getElementById('svq40-options');
+            optsDiv.innerHTML = "";
+            
+            q.a.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.style.padding = "15px";
+                btn.style.border = "1px solid #ddd";
+                btn.style.borderRadius = "8px";
+                btn.style.cursor = "pointer";
+                btn.style.backgroundColor = "#fff";
+                btn.style.fontSize = "16px";
+                btn.style.transition = "0.2s";
+                
+                btn.onmouseover = () => { if(!sv40Answered) btn.style.backgroundColor = "#f0f8ff"; };
+                btn.onmouseout = () => { if(!sv40Answered) btn.style.backgroundColor = "#fff"; };
+                btn.onclick = () => checkSvg40(i, btn);
+                
+                optsDiv.appendChild(btn);
+            });
+        }
+
+        function checkSvg40(idx, btn) {
+            if(sv40Answered) return;
+            sv40Answered = true;
+            
+            const correct = sv40Questions[sv40Idx].c;
+            const allBtns = document.getElementById('svq40-options').children;
+
+            if(idx === correct) {
+                btn.style.backgroundColor = "#d4edda";
+                btn.style.borderColor = "#28a745";
+                btn.style.color = "#155724";
+                sv40Score++;
+            } else {
+                btn.style.backgroundColor = "#f8d7da";
+                btn.style.borderColor = "#dc3545";
+                btn.style.color = "#721c24";
+                allBtns[correct].style.backgroundColor = "#d4edda";
+                allBtns[correct].style.color = "#155724";
+            }
+
+            setTimeout(() => {
+                sv40Idx++;
+                if(sv40Idx < sv40Questions.length) {
+                    loadSvg40Q();
+                } else {
+                    document.getElementById('svq40-question-area').style.display = 'none';
+                    document.getElementById('svq40-result').style.display = 'block';
+                    document.getElementById('svq40-score').innerText = sv40Score + " / 40";
+                }
+            }, 1000);
+        }
+
+        loadSvg40Q();
+    </script>
+</div>
 <footer>
     <p>Word Uzman Egitim Dokumani - 2026</p>
 </footer>
@@ -1299,5 +1501,6 @@
 
 </body>
 </html>
+
 
 
