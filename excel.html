@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Pro Master Rehber</title>
+    <style>
+        :root {
+            --excel-green: #217346;
+            --excel-dark: #103523;
+            --bg-light: #f3f2f1;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            color: #333;
+        }
+
+        /* Navigasyon */
+        nav {
+            background: var(--excel-green);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 20px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+        }
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        /* Sekme Bolumleri */
+        .excel-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 8px solid var(--excel-green);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--excel-green);
+            text-transform: uppercase;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ribbon-placeholder {
+            width: 100%;
+            min-height: 100px;
+            background: #e1e1e1;
+            border: 2px dashed #bbb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+
+        .ribbon-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 25px;
+        }
+
+        /* Detay Gridi */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover { transform: translateY(-5px); border-color: var(--excel-green); }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: var(--excel-dark);
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+
+        /* Accordion Stili */
+        .info-item {
+            margin-top: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .btn-i {
+            background: var(--excel-green);
+            color: white;
+            border: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .content-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: #fff;
+            padding: 0 10px;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .content-panel.open {
+            max-height: 500px;
+            padding: 10px;
+            border-left: 3px solid var(--excel-green);
+            margin-bottom: 10px;
+        }
+
+        .formula-box {
+            background: #222;
+            color: #0f0;
+            padding: 5px 10px;
+            font-family: monospace;
+            border-radius: 4px;
+            display: block;
+            margin-top: 5px;
+        }
+
+        footer { text-align: center; padding: 50px; color: #777; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#giris">Giris</a>
+    <a href="#ekle">Ekle</a>
+    <a href="#sayfa_duzeni">Sayfa Duzeni</a>
+    <a href="#formuller">Formuller</a>
+    <a href="#veri">Veri</a>
+    <a href="#gozden_gecir">Gozden Gecir</a>
+    <a href="#gorunum">Gorunum</a>
+</nav>
+ 
+<div class="wrapper">
+
+<section id="giris" class="excel-section">
+    <h2>?? EXCEL GIRIS SEKMESI - TUM AYRINTILAR</h2>
+      <div class="ribbon-placeholder"><img src="giris.png" class="ribbon-img" alt="Giris Seridi">
+</div>	
+
+    <div class="detail-grid">
+        
+        <div class="card">
+            <h3>?? PANO (CLIPBOARD)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Yapistir ve Ozel Yapistir <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Excel'de yapistirma islemi cok detaylidir. Sadece formulu, sadece degeri veya sadece bicimi yapistirabilirsiniz.
+                    <span class="formula-box">Ozel Yapistir Kisayolu: CTRL + ALT + V</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Bicim Boyacisi <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Secili hucrenin tum gorsel ozelliklerini (renk, font, kenarlik) kopyalayip baska hucrelere uygular.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? YAZI TIPI (FONT)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Kenarliklar (Borders) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Excel'in klavuz cizgileri yazicida cikmaz. Tablonun yazdirilabilir olmasi icin buradan kenarlik eklenmelidir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Yazdirma ve Dolgu <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hucre arka plan rengi ve yazi tipi rengi buradan ayarlanir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? HIZALAMA (ALIGNMENT)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Metni Kaydir (Wrap Text) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hucreye sigmayan uzun yazilari alt alta yazar. Boylece sutun genisligini bozmaz.
+                    <span class="formula-box">Hucre ici alt satir gecisi: ALT + ENTER</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Birlestir ve Ortala <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Birden fazla hucreyi tek hucre yapar. SADECE SOL USTTEKI veriyi saklar, digerlerini siler!
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? SAYI FORMATLARI (NUMBER)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Genel, Sayi, Para Birimi <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Sayinin tipini belirler. Finansal formatta para birimi simgesi sola yasli durur.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Tarih ve Saat <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Excel tarihleri 1900'den baslayan sayilar olarak tutar. 1 sayisi 01.01.1900 demektir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? STILLER (STYLES)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Kosullu Bicimlendirme <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Belirli bir sarta uyan (orn: 50'den kucukse) hucreleri otomatik renklendirme isidir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Tablo Olarak Bicimlendir <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Verileri "Zeki Tablo"ya donusturur; otomatik filtre ve toplam satiri ekler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? DUZENLEME (EDITING)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Otomatik Toplam (AutoSum) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hizlica toplama, ortalama, sayma, max ve min islemlerini yapar.
+                    <span class="formula-box">Formul: =TOPLA(A1:A10)</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Sirala ve Filtre Uygula <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Verileri siralama (A-Z) veya belirli kriterlere gore suzme (filtreleme) yapar.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="ekle" class="excel-section">
+    <h2><span style="font-size:30px;">?</span> EKLE SEKMESI - TUM AYRINTILAR</h2>
+    
+    <img src="ekle.png" class="ribbon-img" alt="Excel Ekle Seridi">
+
+    <div class="grid">
+        
+        <div class="card">
+            <h3>?? TABLOLAR</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">PivotTable (Ozet Tablo) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Karmasik veri kumelelerini saniyeler icinde ozetler. Satir ve sutunlari surukle-birak yontemiyle analiz etmenizi saglar.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Onerilen PivotTable'lar <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Excel'in verilerinize bakarak size en uygun ozet tablo yapisini tavsiye ettigi aractir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Tablo <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Verileri iliskili bir kume haline getirir. Otomatik filtreleme ve seritli satirlar ekler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? CIZIMLER</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Resimler ve Sekiller <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Cihazdan veya internetten gorsel ekler. Geometrik sekiller (ok, kare vb.) cizmenizi saglar.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">SmartArt ve Grafikler <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hiyerarsik semalar ve surec diyagramlari ekler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? GRAFIKLER</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Onerilen Grafikler <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Verileri analiz ederek en uygun gorsel sunumu (Sutun, Cizgi, Pasta) tavsiye eder.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Karma Grafik ve Digerleri <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Iki farkli veri turunu (orn: satis miktari ve kar orani) ayni grafikte farkli eksenlerle gosterir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? SPARKLINE'LAR</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Cizgi, Sutun, Kayip/Kazanc <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Tek bir hucre icine sigan mini grafiklerdir. Veri trendlerini (artis/azalis) tek bakista gosterir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? FILTRELER VE BAGLANTILAR</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Dilimleyici (Slicer) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Tablo veya PivotTable verilerini gorsel butonlarla hizla filtrelemeyi saglar.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Kopru (Hyperlink) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Web sitelerine veya dosya icindeki diger hucrelere baglanti verir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? METIN VE SIMGELER</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Metin Kutusu ve WordArt <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hucrelerden bagimsiz hareket eden yazi alanlari ve dekoratif metinler ekler.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Denklem ve Simge <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Matematiksel formuller ve ozel karakterleri (©, ?) ekler.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section id="sayfa_duzeni" class="excel-section">
+    <h2><span style="font-size:30px;">??</span> SAYFA DUZENI SEKMESI - TUM AYRINTILAR</h2>
+    
+    <img src="sayfa_duzeni.png" class="ribbon-img" alt="Excel Sayfa Duzeni Seridi">
+
+    <div class="grid">
+        
+        <div class="card">
+            <h3>?? TEMALAR (THEMES)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Temalar, Renkler ve Yazi Tipleri <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Belgenin tamamina uygulanan renk, yazi tipi ve efekt setlerini degistirir. Tek tikla profesyonel bir gorunum saglar.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? SAYFA YAPISI (PAGE SETUP)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Kenar Bosluklari <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Metnin sayfa kenarlarindan ne kadar iceride olacagini belirler (Normal, Dar, Genis).
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Yonlendirme (Orientation) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Sayfayi Dikey (Portrait) veya Yatay (Landscape) olarak ayarlar.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Boyut (Size) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Kullanilacak kagit turunu secer (A4, A3, Letter vb.).
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Yazdirma Alani (Print Area) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Sadece secili hucrelerin yazdirilmasini saglar. Buyuk tablolarda sadece belirli bir kismi cikarmak icin kullanilir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Kesmeler ve Arka Plan <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Sayfa sonu ekler veya belgenin arka planina bir resim yerlestirir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Basliklari Yazdir <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Cok sayfali ciktilarda, en ustteki baslik satirlarinin her sayfada otomatik olarak tekrarlanmasini saglar.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? SIGDIRMAK ICIN OLCEKLENDIR</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Genislik, Yukseklik ve Olcek <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Buyuk bir tabloyu tek bir sayfaya sigdirmak icin kullanilir. Olcek yuzdesini dusurerek verileri kucultur.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? SAYFA SECENEKLERI</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Klavuz Cizgileri ve Basliklar <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hucre cizgilerinin ve sutun harflerinin (A, B, C) ekranda gorunup gorunmeyecegini veya yazida cikip cikmayacagini belirler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? YERLESTIR (ARRANGE)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">One Getir / Arkaya Gonder <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Ust uste binen resim veya sekillerin sirasini degistirir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Hizala, Gruplandir ve Dondur <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Nesnelerin sayfadaki yerini milimetrik ayarlar veya birden fazla nesneyi tek bir parca haline getirir.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+   <section id="formuller" class="excel-section">
+    <h2><span style="font-size:30px;">fx</span> FORMULLER SEKMESI - TUM AYRINTILAR</h2>
+    
+    <div class="ribbon-placeholder">    <img src="formuller.png" class="ribbon-img" alt="Excel Sayfa Duzeni Seridi">
+</div>
+
+    <div class="grid">
+        
+        <div class="card">
+            <h3>?? ISLEV KITAPLIGI (FUNCTION LIBRARY)</h3>
+            <p style="font-size:12px; color:#666;">Tum fonksiyonlarin kategorize edildigi yerdir.</p>
+
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Mantýksal (Logical) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Sartli islemler yapmanizi saglar. Sinavda kesin cikar!
+                    <span class="formula-box">=EGER(sart; dogruysa_ne_yazsin; yanlissa_ne_yazsin)</span>
+                    <span class="formula-box">=VE(sart1; sart2) | =YADA(sart1; sart2)</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="info-header" onclick="togglePanel(this)">Arama ve Basvuru <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Baska bir tablodan veri cekmek icin kullanilir.
+                    <span class="formula-box">=DUSEYYAZ(aranan_deger; tablo_dizisi; sutun_indis_sayisi; 0)</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="info-header" onclick="togglePanel(this)">Matematik ve Trigonometri <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Sayýsal islemleri yonetir.
+                    <span class="formula-box">=TOPLA(aralik) | =ETOPLA(aralik; sart; toplam_araligi)</span>
+                    <span class="formula-box">=YUVARLA(sayi; basamak_sayisi)</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="info-header" onclick="togglePanel(this)">Metin (Text) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Yazilari duzenler.
+                    <span class="formula-box">=BIRLESTIR(metin1; metin2) | =SOLDAN(metin; karakter_sayisi)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? TANIMLI ADLAR (DEFINED NAMES)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Ad Yoneticisi <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Belirli bir hucre araligina isim vermenizi saglar. Ornegin A1:A100 araligina "Satislar" ismi verip formullerde bu ismi kullanabilirsiniz.
+                    <span class="formula-box">=TOPLA(Satislar)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? FORMUL DENETLEME</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Etkileyenleri / Etkilenenleri Izle <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Formulun hangi hucrelerden veri aldigini veya hangi hucreleri besledigini oklarla gosterir. Karmaþýk hatalari bulmak icin kullanilir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Formulleri Goster <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hucrlerdeki sonuclari gizler ve dogrudan yazilan formulleri gosterir.
+                    <span class="formula-box">Kisayol: CTRL + ` (Kesme Isareti)</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Hata Denetimi <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Belgedeki formullerde yapilan mantik hatalarini (Sifira bolme, gecersiz isim vb.) bulur.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? HESAPLAMA (CALCULATION)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Hesaplama Secenekleri <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Excel'in otomatik mi yoksa manuel mi hesaplama yapacagini belirler. Cok buyuk dosyalarda hizi artirmak icin "El Ile" secilebilir.
+                </div>
+            </div>
+        </div>
+		</div>
+		<section id="veri" class="excel-section">
+    <h2><span style="font-size:30px;">??</span> VERI SEKMESI - TUM AYRINTILAR</h2>
+    
+<img src="https://support.content.office.net/tr-tr/media/0164c48d-69a4-49c0-9d0d-9b51829e246a.png" class="ribbon-img" alt="Excel Veri Sekmesi Guncel">
+    <div class="grid">
+        
+        <div class="card">
+            <h3>?? VERI AL (GET & TRANSFORM)</h3>
+            <p style="font-size:12px; color:#666;">Dis kaynaklardan veri cekme islemleri.</p>
+
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Verileri Al <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Excel disindaki kaynaklardan (SQL, Web, Metin dosyasi, Access) veri aktarmanizi saglar.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Web'den Veri Cekme <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Bir internet sitesindeki tabloyu kopyala-yapistir yapmadan, canli baglanti kurarak Excel'e aktarir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? SIRALA VE FILTRELE</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Siralama (Sort) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Verileri A'dan Z'ye veya kucukten buyuge dizer. "Ozel Siralama" ile birden fazla sutuna gore (Orn: Once Sehir, sonra Maas) siralama yapabilir.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Filtre (Filter) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Basliklara oklar ekleyerek sadece belirli kriterlere uyan verileri gormenizi saglar.
+                    <span class="formula-box">Kisayol: CTRL + SHIFT + L</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? VERI ARACLARI</h3>
+            <p style="font-size:12px; color:#666;">Veri temizleme ve dogrulama islemleri.</p>
+
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Metni Sutunlara Donustur <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Tek bir hucreye yazilmis verileri (Orn: "Ad Soyad") bosluk veya virgul gibi isaretlere gore ayri sutunlara boler.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Yinelenenleri Kaldir <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Listedeki tekrar eden (ayni olan) satirlari temizleyerek her veriden sadece bir tane kalmasini saglar.
+                </div>
+            </div>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Veri Dogrulama (Data Validation) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Hucreye girilecek veri tipini kisitlar.
+                    <span class="formula-box">Ornek: Sadece 1-100 arasi sayi girilsin veya acilir bir liste (Dropdown) olussun.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? TAHMIN (FORECAST)</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Durum Cozumlemesi (What-If) <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    "Hedef Ara" ozelligi ile istediginiz bir sonuca ulasmak icin hangi verinin ne olmasi gerektigini hesaplar.
+                    <span class="formula-box">Ornek: Ortalama 85 olsun diye finalden kac almaliyim?</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? ANAHAT</h3>
+            <div class="info-item">
+                <div class="info-header" onclick="togglePanel(this)">Gruplandir ve Alt Toplam <button class="btn-i">i</button></div>
+                <div class="content-panel">
+                    Satirlari gizlenebilir gruplar haline getirir. "Alt Toplam" ise her grup degisiminde otomatik toplama yapar.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+<section id="excel_test" class="excel-section" style="border-top: 8px solid #f1c40f;">
+    <h2><span style="font-size:30px;">??</span> EXCEL FINAL SINAVI - 30 SORU TEST</h2>
+    <p style="margin-bottom: 25px; color: #555; font-weight: bold;">Her soruyu dikkatlice oku ve dogru sikka týkla. En altta skorunu gorebilirsin.</p>
+
+    <div id="quiz-container">
+        </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <button id="check-results-btn" onclick="finishTest()" style="padding: 15px 40px; background: #2c3e50; color: white; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; transition: 0.3s;">
+            TESTI BITIR VE PUANIMI GOR
+        </button>
+    </div>
+
+    <div id="final-score-board" style="display:none; text-align:center; padding:30px; background:#e8f5e9; border: 2px solid #27ae60; border-radius:15px; margin-top:30px; animation: bounceIn 0.5s;">
+        <h1 id="score-display" style="color:#27ae60; margin:0;"></h1>
+        <p id="feedback-text" style="font-size:18px; color:#333;"></p>
+        <button onclick="location.reload()" style="margin-top:15px; padding:10px 20px; background:#27ae60; color:white; border:none; border-radius:5px; cursor:pointer;">Yeniden Basla</button>
+    </div>
+</section>
+
+<style>
+    @keyframes bounceIn {
+        0% { transform: scale(0.3); opacity: 0; }
+        50% { transform: scale(1.05); opacity: 1; }
+        100% { transform: scale(1); }
+    }
+    .question-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: 0.3s;
+    }
+    .question-card h4 { margin-top: 0; color: #103523; font-size: 16px; }
+    .opts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+    .opt-btn {
+        padding: 12px;
+        background: #f8f9fa;
+        border: 2px solid #eee;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: left;
+        transition: 0.2s;
+        font-size: 14px;
+    }
+    .opt-btn:hover { border-color: #217346; background: #eef9f3; }
+    .opt-btn.selected { border-color: #217346; background: #d4edda; font-weight: bold; }
+    .opt-btn.correct-reveal { background: #27ae60 !important; color: white; border-color: #27ae60; }
+    .opt-btn.wrong-reveal { background: #c0392b !important; color: white; border-color: #c0392b; }
+</style>
+
+<script>
+    const questions = [
+        { q: "1. Excel'de formul yazmaya hangi isaretle baslanir?", ops: ["A) +", "B) *", "C) =", "D) /"], ans: 2 },
+        { q: "2. Hucre icinde manuel alt satira gecmek icin hangisi kullanilir?", ops: ["A) SHIFT+ENTER", "B) ALT+ENTER", "C) CTRL+ENTER", "D) TAB"], ans: 1 },
+        { q: "3. Bir hucre araligindaki en buyuk degeri bulan fonksiyon hangisidir?", ops: ["A) TOPLA", "B) ORTALAMA", "C) MAK", "D) MIN"], ans: 2 },
+        { q: "4. Excel dosyalarinin uzantisi nedir?", ops: ["A) .docx", "B) .xlsx", "C) .pptx", "D) .pdf"], ans: 1 },
+        { q: "5. Hucrede '####' isareti neyi ifade eder?", ops: ["A) Yanlis Formul", "B) Sutun Dar", "C) Bos Hucre", "D) Sifira Bolme"], ans: 1 },
+        { q: "6. Hucreleri birlestirdiginizde hangisi dogrudur?", ops: ["A) Veriler toplanir", "B) Sadece sol ustteki veri kalir", "C) Hepsi saklanir", "D) Veri saga yaslanir"], ans: 1 },
+        { q: "7. $A$1 seklindeki tanimlama ne anlama gelir?", ops: ["A) Dinamik hucre", "B) Gizli hucre", "C) Sabitlenmis hucre", "D) Hata mesaji"], ans: 2 },
+        { q: "8. #AD? hatasi neden kaynaklanir?", ops: ["A) Yanlis bolme", "B) Fonksiyon ismi hatasi", "C) Sayi hatasi", "D) Sutun darligi"], ans: 1 },
+        { q: "9. Sarta gore hucre renklendiren ozellik hangisidir?", ops: ["A) Filtreleme", "B) Kosullu Bicimlendirme", "C) Tablo Olustur", "D) Veri Dogrulama"], ans: 1 },
+        { q: "10. 'Hedef Ara' hangi sekmede bulunur?", ops: ["A) Giris", "B) Ekle", "C) Veri", "D) Formuller"], ans: 2 },
+        { q: "11. Hucre icine sigan mini grafiklere ne denir?", ops: ["A) Sparkline", "B) SmartArt", "C) Pivot", "D) Dilimleyici"], ans: 0 },
+        { q: "12. Buyuk verileri ozetleyen en guclu arac nedir?", ops: ["A) Tablo", "B) PivotTable", "C) Grafik", "D) Filtre"], ans: 1 },
+        { q: "13. Veri siralama ve suzme hangi sekmededir?", ops: ["A) Sayfa Duzeni", "B) Veri", "C) Gorunum", "D) Ekle"], ans: 1 },
+        { q: "14. Baska tablodan veri cekme fonksiyonu nedir?", ops: ["A) EGER", "B) TOPLA", "C) DUSEYYAZ", "D) YUVARLA"], ans: 2 },
+        { q: "15. Basliklarin her sayfada cikmasini saglayan komut hangisidir?", ops: ["A) Sayfa Sonu", "B) Basliklari Yazdir", "C) Olcek", "D) Kenar Boslugu"], ans: 1 },
+        { q: "16. Yanlis veri girisini engelleyen arac hangisidir?", ops: ["A) Filtre", "B) Veri Dogrulama", "C) Hedef Ara", "D) Gruplandir"], ans: 1 },
+        { q: "17. Formulleri hucrede kod olarak gorme kisayolu nedir?", ops: ["A) CTRL + `", "B) CTRL + F", "C) ALT + F4", "D) CTRL + S"], ans: 0 },
+        { q: "18. #SAYI/0! hatasi nedir?", ops: ["A) Ad hatasi", "B) Sifira bolme", "C) Deger hatasi", "D) Bos hucre"], ans: 1 },
+        { q: "19. Metinleri birlestirme isareti nedir?", ops: ["A) +", "B) &", "C) *", "D) #"], ans: 1 },
+        { q: "20. Sayi olan hucreleri sayan fonksiyon hangisidir?", ops: ["A) SAY", "B) BAG_DEG_SAY", "C) TOPLA", "D) EGER"], ans: 1 },
+        { q: "21. Sutun gizleme islemi nasil yapilir?", ops: ["A) Delete tusu", "B) Sag tik -> Gizle", "C) CTRL+H", "D) Ekle -> Sutun"], ans: 1 },
+        { q: "22. Sifreleme islemi hangi menudedir?", ops: ["A) Dosya", "B) Veri", "C) Gorunum", "D) Ekle"], ans: 0 },
+        { q: "23. Sayi yuvarlama fonksiyonu hangisidir?", ops: ["A) TABAN", "B) YUVARLA", "C) TAVAN", "D) SAYI"], ans: 1 },
+        { q: "24. Filtreleme kisayolu nedir?", ops: ["A) CTRL+F", "B) CTRL+SHIFT+L", "C) CTRL+P", "D) ALT+F1"], ans: 1 },
+        { q: "25. #DEGER! hatasi ne zaman alinir?", ops: ["A) Sutun darligi", "B) Metin-sayi uyumsuzlugu", "C) Ad hatasi", "D) Bos hucre"], ans: 1 },
+        { q: "26. Cift kayitlari silen arac hangisidir?", ops: ["A) Filtre", "B) Yinelenenleri Kaldir", "C) Sirala", "D) Gruplandir"], ans: 1 },
+        { q: "27. Sayfayi dikeyden yataya ceviren ayar nedir?", ops: ["A) Boyut", "B) Yonlendirme", "C) Kenar Boslugu", "D) Olcek"], ans: 1 },
+        { q: "28. 'Hedef Ara' hangi analiz grubundadir?", ops: ["A) Tahmin", "B) Durum Cozumlemesi", "C) Veri Araclari", "D) Siralama"], ans: 1 },
+        { q: "29. Yorum ekleme kisayolu nedir?", ops: ["A) SHIFT+F2", "B) CTRL+F2", "C) ALT+F2", "D) F2"], ans: 0 },
+        { q: "30. Excel'deki toplam satir sayisi yaklasik kactir?", ops: ["A) 100 Bin", "B) 500 Bin", "C) 1 Milyon+", "D) Sinirsiz"], ans: 2 }
+    ];
+
+    let userAnswers = new Array(questions.length).fill(null);
+
+    function initQuiz() {
+        const container = document.getElementById('quiz-container');
+        questions.forEach((item, qIdx) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.innerHTML = `<h4>${item.q}</h4><div class="opts-grid"></div>`;
+            const grid = card.querySelector('.opts-grid');
+            
+            item.ops.forEach((opt, oIdx) => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = opt;
+                btn.onclick = () => selectOption(qIdx, oIdx, btn);
+                grid.appendChild(btn);
+            });
+            container.appendChild(card);
+        });
+    }
+
+    function selectOption(qIdx, oIdx, btn) {
+        userAnswers[qIdx] = oIdx;
+        const buttons = btn.parentElement.querySelectorAll('.opt-btn');
+        buttons.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+    }
+
+    function finishTest() {
+        let score = 0;
+        const cards = document.querySelectorAll('.question-card');
+        
+        questions.forEach((item, qIdx) => {
+            const btns = cards[qIdx].querySelectorAll('.opt-btn');
+            const correctIdx = item.ans;
+            const userIdx = userAnswers[qIdx];
+
+            btns.forEach((btn, bIdx) => {
+                btn.disabled = true;
+                if(bIdx === correctIdx) btn.classList.add('correct-reveal');
+                if(userIdx === bIdx && userIdx !== correctIdx) btn.classList.add('wrong-reveal');
+            });
+
+            if(userIdx === correctIdx) score++;
+        });
+
+        const display = document.getElementById('score-display');
+        const feedback = document.getElementById('feedback-text');
+        const board = document.getElementById('final-score-board');
+        
+        display.innerText = `Skorun: ${score} / 30`;
+        feedback.innerText = score > 20 ? "Harika! Finalden gececeksin." : "Biraz daha calismalisin Bilgisayar Programcýsý seniii .";
+        board.style.display = 'block';
+        document.getElementById('check-results-btn').style.display = 'none';
+        board.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    initQuiz();
+</script>
+<footer>
+    EXCEL PRO MASTER EGITIM SERISI - 2026
+</footer>
+
+<script>
+    function togglePanel(header) {
+        const panel = header.nextElementSibling;
+        const btn = header.querySelector('.btn-i');
+        
+        panel.classList.toggle('open');
+        
+        if (panel.classList.contains('open')) {
+            btn.style.transform = "rotate(45deg)";
+            btn.style.background = "#333";
+        } else {
+            btn.style.transform = "rotate(0deg)";
+            btn.style.background = "#217346";
+        }
+    }
+</script>
+
+</body>
+</html>
