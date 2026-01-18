@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word & Excel Interaktif Test</title>
+    <style>
+        :root {
+            --word-blue: #2b579a;
+            --excel-green: #217346;
+            --bg: #f4f7f6;
+            --white: #ffffff;
+            --correct: #27ae60;
+            --wrong: #c0392b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Sekme Menusu */
+        .tab-menu {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .word-tab { background: var(--word-blue); color: white; }
+        .excel-tab { background: var(--excel-green); color: white; }
+        .tab-btn:hover { transform: scale(1.05); opacity: 0.9; }
+        .tab-btn.active { box-shadow: 0 0 15px rgba(0,0,0,0.3); border: 2px solid white; }
+
+        /* Test Alani */
+        .quiz-container {
+            background: var(--white);
+            width: 90%;
+            max-width: 700px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .option:hover { background: #f0f0f0; border-color: #bbb; }
+        .option.correct { background: var(--correct) !important; color: white; border-color: var(--correct); }
+        .option.wrong { background: var(--wrong) !important; color: white; border-color: var(--wrong); }
+
+        /* Skor ve Navigasyon */
+        .stats {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .nav-btns {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .next-btn {
+            background: #34495e;
+            color: white;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* Sadece cevap verilince gorunur */
+        }
+
+        .next-btn:hover { background: #2c3e50; }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>WORD & EXCEL SINAV MODULU</h1>
+</header>
+
+<div class="tab-menu">
+    <button class="tab-btn word-tab active" onclick="startQuiz('word')">WORD TESTI</button>
+    <button class="tab-btn excel-tab" onclick="startQuiz('excel')">EXCEL TESTI</button>
+</div>
+
+<div class="quiz-container" id="quiz-box">
+    <div id="question-area">
+        <div class="question" id="q-text">Soru yukleniyor...</div>
+        <div class="options" id="opt-container">
+            </div>
+    </div>
+    
+    <div class="stats">
+        <span>Soru: <span id="q-count">1/40</span></span>
+        <span>Dogru: <span id="correct-score" style="color:var(--correct)">0</span></span>
+        <span>Yanlis: <span id="wrong-score" style="color:var(--wrong)">0</span></span>
+    </div>
+
+    <div class="nav-btns">
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()">SIRADAKI SORU</button>
+    </div>
+</div>
+
+<script>
+    const wordQuestions = [
+        { q: "Word programinda yeni bir belge acmak icin hangi kisayol kullanilir?", a: "B", ops: ["A) CTRL+O", "B) CTRL+N", "C) CTRL+S", "D) CTRL+W"] },
+        { q: "Mevcut bir belgeyi kaydetmek icin hangi kisayol kullanilir?", a: "A", ops: ["A) CTRL+S", "B) CTRL+V", "C) CTRL+X", "D) CTRL+C"] },
+        { q: "Metni Kalin yapmak icin hangi tus kombinasyonu uygulanir?", a: "A", ops: ["A) CTRL+K", "B) CTRL+I", "C) CTRL+T", "D) CTRL+L"] },
+        { q: "Metnin altini cizmek icin hangi kisayol kullanilir?", a: "C", ops: ["A) CTRL+S", "B) CTRL+T", "C) CTRL+U", "D) CTRL+A"] },
+        { q: "Tum metni secmek icin hangi komut kullanilir?", a: "A", ops: ["A) CTRL+A", "B) CTRL+S", "C) CTRL+Z", "D) CTRL+F"] }
+        // ... Buraya tum 40 soruyu ekleyebilirsin
+    ];
+
+    const excelQuestions = [
+        { q: "Excel dosyalarinin uzantisi nedir?", a: "C", ops: ["A) .docx", "B) .pptx", "C) .xlsx", "D) .txt"] },
+        { q: "Excel'de dikey olan alanlara ne denir?", a: "B", ops: ["A) Satir", "B) Sutun", "C) Hucre", "D) Sayfa"] },
+        { q: "Bir hucreye formul yazmaya hangi isaretle baslanir?", a: "C", ops: ["A) +", "B) -", "C) =", "D) *"] },
+        { q: "Toplama islemi icin hangi fonksiyon kullanilir?", a: "A", ops: ["A) TOPLA", "B) ORTALAMA", "C) SAY", "D) CARP"] }
+        // ... Buraya tum 40 soruyu ekleyebilirsin
+    ];
+
+    let currentQuestions = wordQuestions;
+    let currentIdx = 0;
+    let corrects = 0;
+    let wrongs = 0;
+    let answered = false;
+
+    function startQuiz(type) {
+        currentIdx = 0;
+        corrects = 0;
+        wrongs = 0;
+        answered = false;
+        document.getElementById('correct-score').innerText = "0";
+        document.getElementById('wrong-score').innerText = "0";
+        
+        if(type === 'word') {
+            currentQuestions = wordQuestions;
+            document.querySelector('.word-tab').classList.add('active');
+            document.querySelector('.excel-tab').classList.remove('active');
+        } else {
+            currentQuestions = excelQuestions;
+            document.querySelector('.excel-tab').classList.add('active');
+            document.querySelector('.word-tab').classList.remove('active');
+        }
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        answered = false;
+        document.getElementById('next-btn').style.display = 'none';
+        const q = currentQuestions[currentIdx];
+        document.getElementById('q-text').innerText = q.q;
+        document.getElementById('q-count').innerText = (currentIdx + 1) + "/" + currentQuestions.length;
+        
+        const optContainer = document.getElementById('opt-container');
+        optContainer.innerHTML = '';
+        
+        q.ops.forEach((opt, index) => {
+            const letter = String.fromCharCode(65 + index); // A, B, C, D
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerText = opt;
+            div.onclick = () => checkAnswer(div, letter);
+            optContainer.appendChild(div);
+        });
+    }
+
+    function checkAnswer(element, letter) {
+        if(answered) return;
+        answered = true;
+        const correctLetter = currentQuestions[currentIdx].a;
+        
+        if(letter === correctLetter) {
+            element.classList.add('correct');
+            corrects++;
+            document.getElementById('correct-score').innerText = corrects;
+        } else {
+            element.classList.add('wrong');
+            wrongs++;
+            document.getElementById('wrong-score').innerText = wrongs;
+            // Dogruyu da goster
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                if(opt.innerText.startsWith(correctLetter)) opt.classList.add('correct');
+            });
+        }
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentIdx++;
+        if(currentIdx < currentQuestions.length) {
+            loadQuestion();
+        } else {
+            alert("Test bitti! Dogru: " + corrects + " Yanlis: " + wrongs);
+            startQuiz(currentQuestions === wordQuestions ? 'word' : 'excel');
+        }
+    }
+
+    // Baslangic
+    startQuiz('word');
+</script>
+
+</body>
+</html>
