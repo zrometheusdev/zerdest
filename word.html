@@ -1,4 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Pro Rehber</title>
+    <style>
+        :root {
+            --word-blue: #2b579a;
+            --word-dark: #1e3a63;
+            --bg: #f0f2f5;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigasyon - Sabit ve Sik */
+        nav {
+            background: var(--word-blue);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Ana Konteyner */
+        .wrapper {
+            max-width: 1100px;
+            margin: 100px auto 50px;
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left: 8px solid var(--word-blue);
+        }
+
+        h2 {
+            color: var(--word-blue);
+            text-transform: uppercase;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ribbon-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .ribbon-img:hover { transform: scale(1.01); }
+
+        /* Grid Sistemi */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            color: var(--word-dark);
+            margin-top: 0;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+
+        /* Acilir Menu (Accordion) Tasarimi */
+        .item {
+            margin-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .info-btn {
+            background: var(--word-blue);
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            transition: var(--transition);
+        }
+
+        .info-btn:hover { transform: rotate(90deg); background: #222; }
+
+        .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+            background: #fff;
+            padding: 0 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .details.active {
+            max-height: 1000px;
+            transition: max-height 1s ease-in-out;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid var(--word-blue);
+        }
+
+        .example {
+            display: block;
+            margin-top: 10px;
+            padding: 8px;
+            background: #f1f1f1;
+            border-left: 4px solid var(--accent, #217346);
+            color: #333;
+        }
+
+        footer { text-align: center; padding: 40px; color: #888; }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#giris">Giris</a>
+    <a href="#ekle">Ekle</a>
+    <a href="#tasarim">Tasarim</a>
+    <a href="#duzen">Duzen</a>
+    <a href="#basvurular">Basvurular</a>
+    <a href="#postalar">Postalar</a>
+    <a href="#gozden_gecir">Gozden Gecir</a>
+    <a href="#gorunum">Gorunum</a>
+</nav>
+
+<div class="wrapper">
+
+<section id="giris">
+    <h2><span style="font-size:30px;">??</span> GIRIS SEKMESI - TUM DETAYLAR</h2>
+    <img src="giris.png" class="ribbon-img" alt="Giris Seridi">
+
+    <div class="grid">
+        <div class="card">
+            <h3>?? PANO (CLIPBOARD)</h3>
+            <p style="font-size:12px; color:#666;">Metin ve nesne tasima islemleri.</p>
+            
+            <div class="item">
+                <div class="item-header">Yapistir (Paste) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Panoya kopyalanan son ogeyi imlecin oldugu yere ekler.
+                    <span class="example">Kisayol: CTRL + V</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Ozel Yapistir <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metni kaynagindan bagimsiz (sadece metin olarak) veya HTML/Resim olarak yapistirmaya olanak tanir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Bicim Boyacisi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Bir metnin fontunu, rengini ve boyutunu kopyalayip baska bir metne hizla uygular.
+                    <span class="example">Coklu kullanim icin butona cift tiklayin!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? YAZI TIPI (FONT)</h3>
+            <p style="font-size:12px; color:#666;">Karakter bazli bicimlendirme.</p>
+
+            <div class="item">
+                <div class="item-header">Kalin (Bold) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metni belirginlestirir. 
+                    <span class="example" style="font-weight:bold;">Ornek: Bu metin KALINLASTIRILMISTIR.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Italik (Italic) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metni saga dogru eger. 
+                    <span class="example" style="font-style:italic;">Ornek: Bu metin EGIK yazilmistir.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Alt / Ust Simge <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Kimyasal formuller (H²O) veya matematiksel uslu sayilar (x²) yazmak icindir.
+                    <span class="example">Ornek: H<sub>2</sub>O veya 10<sup>2</sup></span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Yazi Tipi Boyutu <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metnin puntosunu ayarlar. 
+                    <span class="example" style="font-size:20px;">Ornek: 20 Punto</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Tum Bicimlendirmeyi Temizle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metne uygulanan tum renk, font ve stil islemlerini silip varsayilan sade metne donusturur.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? PARAGRAF (PARAGRAPH)</h3>
+            <p style="font-size:12px; color:#666;">Blok bazli hizalama ve listeleme.</p>
+
+            <div class="item">
+                <div class="item-header">Hizalamalar <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sola, Saga, Orta ve Iki Yana Yasla seçenekleri ile metin akisini duzenler.
+                    <span class="example" style="text-align:right;">Ornek: Bu saga yasli metindir.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Satir ve Paragraf Araligi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Satirlarin birbirine olan dikey mesafesini (1.0, 1.15, 1.5 vb.) ayarlar.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Goster/Gizle (¶) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sayfadaki gizli bosluklari, sekme karakterlerini ve paragraf sonlarini gosterir. Hatalari gormek icin kritiktir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? STILLER (STYLES)</h3>
+            <p style="font-size:12px; color:#666;">Otomatik bicim setleri.</p>
+
+            <div class="item">
+                <div class="item-header">Normal / Baslik Stilleri <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgeye hiyerarsik yapi katar. Baslik stilleri kullanilmadan otomatik "Icindekiler Tablosu" olusturulamaz.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? DUZENLEME (EDITING)</h3>
+            <p style="font-size:12px; color:#666;">Belge icinde arama ve degisiklik.</p>
+
+            <div class="item">
+                <div class="item-header">Bul / Degistir <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki bir kelimeyi arar veya toplu halde baska bir kelimeyle degistirir.
+                    <span class="example">Kisayol: CTRL + H (Degistir)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="ekle">
+    <h2><span style="font-size:30px;">?</span> EKLE SEKMESI - TUM DETAYLAR</h2>
+    <img src="ekle.png" class="ribbon-img" alt="Ekle Seridi">
+
+    <div class="grid">
+        <div class="card">
+            <h3>?? SAYFALAR (PAGES)</h3>
+            <div class="item">
+                <div class="item-header">Kapak Sayfasi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgenin en basina profesyonelce tasarlanmis bir kapak ekler. Yazar adi, tarih ve baslik alanlari hazir gelir.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Bos Sayfa <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Imlecin oldugu yere aninda bos bir sayfa ekler.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Sayfa Sonu (Page Break) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Mevcut sayfayi o noktada bitirip metni bir sonraki sayfaya tasir.
+                    <span class="example">Kisayol: CTRL + ENTER</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? TABLOLAR (TABLES)</h3>
+            <div class="item">
+                <div class="item-header">Tablo Ekle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Satir ve sutun sayisini secerek veri tablolari olusturmanizi saglar.
+                    <span class="example">
+                        Ornek Tablo Yapisi:<br>
+                        [ Ad | Soyad | Numara ]
+                    </span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Excel Tablosu <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Word icinde kucuk bir Excel hucresi acar; boylece toplama, carpma gibi formulleri kullanabilirsiniz.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? CIZIMLER (ILLUSTRATIONS)</h3>
+            <div class="item">
+                <div class="item-header">Resimler / Cevrimici Resimler <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Bilgisayardan veya internetten (Bing uzerinden) gorsel ekler.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Sekiller (Shapes) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Ok, kare, daire veya yildiz gibi geometrik sekiller cizer.
+                    <span class="example">Ornek: ? ¦ ? ?</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">SmartArt <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Organizasyon semalari, surec diyagramlari veya hiyerarsik listeler olusturur.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Grafik (Chart) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sutun, pasta veya cizgi grafiklerle verileri gorsellestirir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? BAGLANTILAR (LINKS)</h3>
+            <div class="item">
+                <div class="item-header">Kopru (Hyperlink) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Bir metne tıklandığında web sitesine gitmesini veya belge icinde baska bir yere atlamasini saglar.
+                    <span class="example" style="color:blue; text-decoration:underline;">Ornek: www.google.com</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Yer Isareti (Bookmark) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgenin belirli bir bolumune isim vererek oraya hizli ulasim saglar.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? UST / ALT BILGI</h3>
+            <div class="item">
+                <div class="item-header">Ustbilgi (Header) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Her sayfanin en ustunde otomatik olarak gorunen metindir (Orn: Kitap adi).
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Sayfa Numarasi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sayfalari otomatik olarak numaralandirir (1, 2, 3...).
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? METIN VE SIMGELER</h3>
+            <div class="item">
+                <div class="item-header">Metin Kutusu <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sayfanin herhangi bir yerine tasinabilen bagimsiz bir yazi alani acar.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">WordArt <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Dekoratif ve sanatsal metin tasarimlari ekler.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Denklem (Equation) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Karmasik matematiksel formulleri yazmanizi saglar.
+                    <span class="example">Ornek: E = mc²</span>
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Simge (Symbol) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Klavyede bulunmayan ozel karakterleri ekler.
+                    <span class="example">Ornek: ©, ®, €, ?, ?</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="tasarim">
+    <h2><span style="font-size:30px;">??</span> TASARIM SEKMESI - TUM DETAYLAR</h2>
+    <img src="tasarim2.png" class="ribbon-img" alt="Tasarim Seridi">
+
+    <div class="grid">
+        <div class="card">
+            <h3>?? BELGE BICIMLENDIRME</h3>
+            <p style="font-size:12px; color:#666;">Genel stil ve tema ayarlari.</p>
+
+            <div class="item">
+                <div class="item-header">Temalar (Themes) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgenin tamamina uygulanan renk, yazi tipi ve efekt kombinasyonlaridir. Tek tikla tum belgenin havasini degistirir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Stil Kumeleri <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Basliklarin ve metinlerin tasarimini (cizgili, renkli, modern vb.) toplu olarak degistirir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Renkler <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Temada kullanilan renk paletini degistirir. Kurumsal kimlige uygun renk setleri secilebilir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Yazi Tipleri <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki tum baslik ve govde metni fontlarini es zamanli olarak gunceller.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>? ARALIK VE EFEKTLER</h3>
+            <div class="item">
+                <div class="item-header">Paragraf Araligi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki tum paragraflarin birbirine olan mesafesini (Sikismis, Gevsek, Acik vb.) global olarak ayarlar.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Efektler <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki sekillere ve grafiklere uygulanacak golge ve yansima gibi gorsel stilleri belirler.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Varsayilan Olarak Ayarla <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sectiginiz tasarimi, bundan sonra acacaginiz tum yeni Word belgeleri icin standart hale getirir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? SAYFA ARKA PLANI</h3>
+            <p style="font-size:12px; color:#666;">Sayfa gorselligi ve guvenlik.</p>
+
+            <div class="item">
+                <div class="item-header">Filigran (Watermark) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sayfanin arkasina soluk bir yazi veya resim ekler. Belgenin kopyalanmasini onlemek veya durumunu belirtmek icindir.
+                    <span class="example" style="color:#ddd; font-weight:bold; font-style:italic;">Ornek: ACIL, GIZLI veya TASLAK</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Sayfa Rengi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Beyaz olan kagit rengini degistirir. Dijital okumalar icin goz yormayan renkler secilebilir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Sayfa Kenarliklari <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sayfanin etrafina cizgi, cerceve veya desenli suslemeler ekler. Sertifika veya kapak sayfalarinda cok kullanilir.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ <section id="duzen">
+    <h2><span style="font-size:30px;">??</span> DUZEN SEKMESI - TUM DETAYLAR</h2>
+    <img src="sayfa_duzeni.png" class="ribbon-img" alt="Sayfa Duzeni Seridi">
+
+    <div class="grid">
+        <div class="card">
+            <h3>?? SAYFA YAPISI (PAGE SETUP)</h3>
+            <p style="font-size:12px; color:#666;">Kagidin fiziksel ozellikleri.</p>
+
+            <div class="item">
+                <div class="item-header">Kenar Bosluklari <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metnin sayfa kenarlarindan ne kadar iceride olacagini belirler. 
+                    <span class="example">Normal: 2.54 cm (Her yonden)<br>Dar: 1.27 cm</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Yonlendirme (Orientation) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sayfayi dikey (Portrait) veya yatay (Landscape) konuma getirir.
+                    <span class="example">Ornek: Tablolar icin yatay, dilekceler icin dikey kullanilir.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Boyut (Size) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Yazdirilacak kagit turunu secer. 
+                    <span class="example">Standart: A4 (21cm x 29.7cm)<br>Diger: A3, Mektup (Letter), Zarf</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Sutunlar (Columns) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metni gazete veya dergi formatinda dikey parcalara boler.
+                    <span class="example">Ornek: Metni ikiye veya uce bolerek yer kazanin.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Kesmeler (Breaks) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Yeni bir sayfaya, sutuna veya bolume gecmek icin kullanilir. "Bolum Kesmesi" ile farkli sayfalara farkli kenar bosluklari atanabilir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Satir Numaralari <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki her satirin yanina otomatik numara ekler. Hukuki belgelerde cok kullanilir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Heceleme (Hyphenation) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Satir sonuna sigma yan kelimeleri tire (-) ile boler; boylece sag taraftaki bosluklari azaltir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? PARAGRAF (PARAGRAPH INDENT)</h3>
+            <p style="font-size:12px; color:#666;">Bloklar arasi bosluklar.</p>
+
+            <div class="item">
+                <div class="item-header">Girinti (Indent) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Paragrafin sol veya sag kenar boslugunu ozel olarak artirir.
+                    <span class="example">Sol Girinti: 1 cm (Metni saga iter)</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Aralik (Spacing) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Paragraftan "Once" ve "Sonra" birakilacak boslugu ayarlar. 
+                    <span class="example">Orn: Paragraf sonrasina 12 nk bosluk koymak metni nefes aldirir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? YERLESTIR (ARRANGE)</h3>
+            <p style="font-size:12px; color:#666;">Nesne ve resimlerin hiyerarsisi.</p>
+
+            <div class="item">
+                <div class="item-header">Metni Kaydir (Wrap Text) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Resmin metnin icinde mi, arkasinda mi yoksa ustunde mi duracagini belirler.
+                    <span class="example">Sik kullanilan: Kare (Square) veya Metnin Onune.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">One Getir / Arkaya Gonder <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Ust uste binen resim veya sekillerin katman sirasini degistirir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Hizala (Align) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Birden fazla nesneyi tam olarak ayni hizada tutar.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Dondur (Rotate) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Resmi veya sekli 90 derece saga/sola cevirir veya dikey/yatay yansitir.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <section id="basvurular">
+    <h2><span style="font-size:30px;">??</span> BASVURULAR SEKMESI - TUM DETAYLAR</h2>
+    <img src="basvurular.png" class="ribbon-img" alt="Basvurular Seridi">
+
+    <div class="grid">
+        <div class="card">
+            <h3>?? ICINDEKILER (TABLE OF CONTENTS)</h3>
+            <p style="font-size:12px; color:#666;">Otomatik dizin olusturma.</p>
+
+            <div class="item">
+                <div class="item-header">Icindekiler Tablosu <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki "Baslik" stillerini tarayarak otomatik bir sayfa dizini olusturur.
+                    <span class="example">Ornek:<br>Giris .......... 1<br>Gelisme ....... 5</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Tabloyu Guncelle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgede sayfa numaralari veya basliklar degistiginde tabloyu tek tikla yeni verilere gore yeniler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? DIPNOTLAR (FOOTNOTES)</h3>
+            <p style="font-size:12px; color:#666;">Sayfa ici aciklamalar.</p>
+
+            <div class="item">
+                <div class="item-header">Dipnot Ekle (Insert Footnote) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sayfanin en altina kucuk bir not ekler. Teknik terimleri aciklamak icin kullanilir.
+                    <span class="example">Kisayol: CTRL + ALT + F</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Sonnot Ekle (Insert Endnote) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Aciklamayi sayfa altina degil, tum belgenin en son sayfasina ekler.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Sonraki Dipnot <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki dipnotlar arasinda hizla gecis yapmanizi saglar.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? ATIFLAR VE KAYNAKCA</h3>
+            <p style="font-size:12px; color:#666;">Alinti ve akademik kaynak yonetimi.</p>
+
+            <div class="item">
+                <div class="item-header">Alinti Ekle (Insert Citation) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Yazdiginiz bir bilginin hangi kitaptan veya yazardan alindigini belirtir.
+                    <span class="example">Ornek: (Yilmaz, 2024)</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Kaynaklari Yonet <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Daha once eklediginiz tum kitap, makale ve web sitesi kaynaklarini duzenler veya yeni kaynak ekler.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Stil (Style) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Kaynakcanin yazim formatini degistirir. 
+                    <span class="example">Sik kullanilanlar: APA, MLA, IEEE.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Kaynakça (Bibliography) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgenin sonunda, kullanilan tum kaynaklari secilen stile gore alfabetik olarak listeler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? RESIM YAZILARI (CAPTIONS)</h3>
+            <p style="font-size:12px; color:#666;">Gorsel ve tablo isimlendirme.</p>
+
+            <div class="item">
+                <div class="item-header">Resim Yazisi Ekle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Resim veya tablolarin altina otomatik numara ve isim verir.
+                    <span class="example">Ornek: Sekil 1: Dunya Haritasi</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Sekiller Tablosu Ekle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki tum resimlerin, tablolarin veya grafiklerin sayfa numaralariyla birlikte listesini olusturur.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Capraz Basvuru <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metin icinde baska bir basliga veya tabloya link verir.
+                    <span class="example">Ornek: (Bkz. Sekil 2, Sayfa 14)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? DIZIN (INDEX)</h3>
+            <div class="item">
+                <div class="item-header">Giris Isaretle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Onemli anahtar kelimeleri isaretleyerek belgenin en sonunda alfabetik bir "Dizin" (Index) olusturmanizi saglar.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="postalar">
+    <h2><span style="font-size:30px;">??</span> POSTALAR SEKMESI - TUM DETAYLAR</h2>
+	    <img src="postalar.jpg" class="ribbon-img" alt="Giris Seridi">
+    <p style="background: #fff4ce; padding: 12px; border-left: 5px solid #ffc107; font-size: 14px; border-radius: 4px;">
+        <strong>NOT:</strong> Bu sekme, bir veri kaynagi (Excel listesi gibi) ile Word belgesini birlestirerek toplu islem yapmanizi saglar. 
+        Genelde binlerce kisiye kisisellestirilmis mektup veya sertifika gonderirken kullanilir.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>?? OLUSTUR (CREATE)</h3>
+            <p style="font-size:12px; color:#666; margin-bottom:10px;">Temel zarf ve etiket ayarlari.</p>
+            
+            <div class="item">
+                <div class="item-header">Zarflar (Envelopes) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Gonderici ve alici adreslerini standart zarf boyutlarina gore konumlandirir. Yazicidan zarf uzerine dogrudan baski almanizi saglar.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Etiketler (Labels) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Dosya klasorleri, kargo paketleri veya barkodlar icin yapiskanli etiket formatlari olusturur. Ayni adresi tum sayfaya cogaltabilir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? BIRLESTIRMEYI BASLAT</h3>
+            <p style="font-size:12px; color:#666; margin-bottom:10px;">Veri baglantisi ve mektup tipi.</p>
+            
+            <div class="item">
+                <div class="item-header">Adres Mektup Birlestirme <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Islemi baslatir. Mektup, E-posta, Zarf veya Etiket seceneklerinden birini belirlemenizi saglar.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Alicilari Sec <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Veri kaynagini (Kimlere gonderilecek?) belirler.
+                    <span class="example">Ipuccu: Var olan Excel listesini kullanmak en yaygin yoldur.</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Alici Listesini Duzenle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Listedeki kisileri filtrelemenizi saglar. Ornegin; sadece "Ankara"da yasayanlara mektup gonderilmesini secebilirsiniz.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? ALANLARI YAZ VE EKLE</h3>
+            <p style="font-size:12px; color:#666; margin-bottom:10px;">Degisken verilerin yerlesimi.</p>
+            
+            <div class="item">
+                <div class="item-header">Adres Blogu <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Alicinin adini, soyadini ve tam adresini profesyonel bir blok halinde otomatik yerlestirir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Karsilama Satiri <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Otomatik selamlama ekler. 
+                    <span class="example">Ornek: Sayin [Ad] [Soyad],</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Birlestirme Alani Ekle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Excel'deki basliklari metin icine yerlestirir.
+                    <span class="example">Ornek: Sayin &lt;&lt;Ad&gt;&gt;, bu ayki borcunuz &lt;&lt;Miktar&gt;&gt; TL'dir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>? ONIZLEME VE BITIR</h3>
+            <p style="font-size:12px; color:#666; margin-bottom:10px;">Final kontrol ve cikti alma.</p>
+            
+            <div class="item">
+                <div class="item-header">Sonuclari Onizle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Alanlarin (<< >>) yerine listedeki gercek isimlerin nasil durdugunu gosterir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Kayitlarda Gezin <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Ok tuslariyla 1. kisiden 1000. kisiye kadar tum mektuplari tek tek kontrol etmenizi saglar.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Birlestir ve Bitir <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Sureci tamamlar. Tum mektuplari tek bir dev dosya yapabilir, dogrudan yaziciya gonderebilir veya kisisel e-posta olarak postalayabilirsiniz.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <section id="gozden_gecir">
+    <h2><span style="font-size:30px;">??</span> GOZDEN GECIR SEKMESI - TUM DETAYLAR</h2>
+    <img src="gozden_gecir.png" class="ribbon-img" alt="Gozden Gecir Seridi">
+
+    <div class="grid">
+        <div class="card">
+            <h3>?? YAZIM DENETLEME (PROOFING)</h3>
+            <p style="font-size:12px; color:#666;">Hata ayiklama ve dil araclari.</p>
+
+            <div class="item">
+                <div class="item-header">Yazim ve Dil Bilgisi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Yazim hatalarini (kirmizi alt cizgi) ve dil bilgisi hatalarini (mavi alt cizgi) denetler ve oneriler sunar.
+                    <span class="example">Kisayol: F7</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Es Anlamlilar (Thesaurus) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Secili kelimenin yerine kullanilabilecek alternatif kelimeleri listeler. Kelime dagarcigini gelistirmek icindir.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">Sozcuk Sayisi <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki toplam sayfa, kelime, karakter ve paragraf sayisini detayli bir rapor olarak sunar.
+                    <span class="example">Odev veya makale sinirlari icin kritiktir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? DIL VE OKUMA</h3>
+            <div class="item">
+                <div class="item-header">Cevir (Translate) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Secili metni veya tum belgeyi Microsoft Translator kullanarak baska bir dile cevirir.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Dil Sec (Language) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Yazim denetiminin hangi dilde yapilacagini belirler (Orn: Ingilizce metin yazarken Ingilizce denetimi secmek).
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Sesli Oku (Read Aloud) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metni yapay zeka sesiyle sesli olarak okur. Gozden kacirilan hatalari duymak icin harikadir.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? YORUMLAR (COMMENTS)</h3>
+            <p style="font-size:12px; color:#666;">Geri bildirim ve notlar.</p>
+
+            <div class="item">
+                <div class="item-header">Yeni Yorum <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Metnin yanina kucuk bir not balonu ekler. Belgeyi degistirmeden geri bildirim vermeyi saglar.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Yorumlari Goster <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Belgedeki tum yorumlari saga acilan bir panelde listeler.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>??? IZLEME (TRACKING)</h3>
+            <p style="font-size:12px; color:#666;">Ortak calisma takibi.</p>
+
+            <div class="item">
+                <div class="item-header">Degisiklikleri Izle <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Aktif edildiginde, belgede yapilan her silme ve ekleme islemi renkli olarak isaretlenir. Kimin neyi degistirdigi gorunur.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Kabul Et / Reddet <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Izleme modunda yapilan degisiklikleri onaylayarak belgeye kalici olarak isler veya reddederek eski haline dondurur.
+                </div>
+            </div>
+            <div class="item">
+                <div class="item-header">Karsilastir (Compare) <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
+                    Bir belgenin iki farkli surumunu yan yana getirir ve aradaki farklari otomatik olarak bulur.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>?? KORU (PROTECT)</h3>
+            <div class="item">
+                <div class="item-header">Duzenlemeyi Kisitla <button class="info-btn" onclick="toggle(this)">i</button></div>
+                <div class="details">
                     Baskalarinin belgede degisiklik yapmasini engeller. Sadece belirli alanlarin degistirilmesine veya sadece yorum yapilmasina izin verilebilir.
                 </div>
             </div>
